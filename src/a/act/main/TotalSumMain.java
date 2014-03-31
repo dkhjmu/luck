@@ -11,6 +11,7 @@ public class TotalSumMain {
 	public static void main(String[] args) {
 		ArrayList<ResultVO> list = getResultList();
 		printListResult(list);
+		System.out.println("End!");
 	}
 
 	private static ArrayList<ResultVO> getResultList() {
