@@ -35,13 +35,8 @@ public class PatternMaker {
 		System.out.println("Start Making!");
 		int t[]={1,2,3,4,5,6};
 		
-		//System.out.println(getAllpattern(6,1));
+		System.out.println(getAllpattern(15,4));
 		
-		PtnVO no1=getPtnBase(t);
-
-		no1.setPickCnt(2);
-		
-		getPtn(no1);
 		
 		
 		System.out.println("End Making");
