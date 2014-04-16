@@ -63,6 +63,7 @@ public class PtnVO {
 	public int getPickCnt() {
 		return pickCnt;
 	}
+	
 
 	public void setPickCnt(int pickCnt) {
 		this.pickCnt = pickCnt;

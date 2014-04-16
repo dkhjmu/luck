@@ -18,6 +18,7 @@ public class PlanB {
 		for(int i=0;i<t.length-picks+1;i++){
 			temp=removeArray(temp,t[i]);
 			getPtnSub(t[i]+"-", temp, 1, picks);
+			
 		}
 	}
 	

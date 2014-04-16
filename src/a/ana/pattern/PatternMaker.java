@@ -39,6 +39,7 @@ public class PatternMaker {
 		
 		
 		
+		
 		System.out.println("End Making");
 	}
 	
