@@ -31,55 +31,54 @@ public class PatternMaker {
 	}
 	
 	
+	static int vv=0;
+	
 	public static void main(String[] args) {
-		System.out.println("Start Making!");
-		int t[]={1,2,3,4,5,6};
+		System.out.println("start");
+		int t[]={1,2,3,4,5,6,7,8,9,10};
 		
-		System.out.println(getAllpattern(15,4));
+		getPtnMain(t, 4);
 		
-		
-		
-		
-		System.out.println("End Making");
+		System.out.println("end");
+	}
+
+	public static void getPtnMain(int[] t, int picks) {
+		int[] temp=t.clone();
+		for(int i=0;i<t.length-picks+1;i++){
+			temp=removeArray(temp,t[i]);
+			getPtnSub(t[i]+"-", temp, 1, picks);
+			
+		}
 	}
 	
-	
-	private static void getPtn(PtnVO base) {
-		base.setCurrentCnt(base.getCurrentCnt()+1);
-		ArrayList<IntVO> list = base.getList();
-		
-		if(base.getCurrentCnt()==base.getPickCnt()){
-			if(list.size()==1){
-				System.out.println(list.get(0)+"\t");
-				return;
-			}else{
-				System.out.println(list.get(0)+"\t");
-				System.out.println();
-				base.remove(list.get(0));
-				PtnVO child = getPtnBase(list);
-				child.setCurrentCnt(base.getCurrentCnt());
-				child.setPickCnt(base.getPickCnt());
-				getPtn(child);
+	private static int getPtnSub(String selected, int[] t, int num, int picks) {
+		//System.out.println(selected);
+		num=num+1;
+		int[] temp=t.clone();
+		if(num==picks){
+			for(int i=0;i<t.length;i++){
+				vv++;
+				System.out.println(vv+"\t"+selected+t[i]);
+			}
+		}else{
+			for(int i=0;i<t.length-(picks-num);i++){
+				temp=removeArray(temp,t[i]);
+				getPtnSub(selected+t[i]+"-", temp, num, picks);
+			}
+		}
+		return 1;
+	}
+
+	public static int[] removeArray(int[] t, int b){
+		int[] r=new int[t.length-1];
+		int j=0;
+		for(int i=0;i<t.length;i++){
+			if(t[i]!=b){
+				r[j++] = t[i];
 			}
 		}
 		
-	}
-
-
-	public static PtnVO getPtnBase(ArrayList<IntVO> t) {
-		PtnVO vo=new PtnVO();
-		for(int i=0;i<t.size();i++){
-			vo.add(new IntVO(t.get(i)));
-		}
-		return vo;
-	}
-	
-	public static PtnVO getPtnBase(int[] t) {
-		PtnVO vo=new PtnVO();
-		for(int i=0;i<t.length;i++){
-			vo.add(new IntVO(t[i]));
-		}
-		return vo;
+		return r;
 	}
 
 
