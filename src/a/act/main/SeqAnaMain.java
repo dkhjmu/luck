@@ -212,6 +212,12 @@ public class SeqAnaMain {
 		return str;
 	}
 
+	/**
+	 * 평균값 출력
+	 * @param c
+	 * @param a
+	 * @return
+	 */
 	public static String printListCA(int[] c, int [] a) {
 		String str="";
 		float avg=0.0f;

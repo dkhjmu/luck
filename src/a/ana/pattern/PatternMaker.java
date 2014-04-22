@@ -35,20 +35,39 @@ public class PatternMaker {
 	
 	public static void main(String[] args) {
 		System.out.println("start");
-		int t[]={1,2,3,4,5,6,7,8,9,10};
+//		int t[]={1,2,3,4,5,6,7,8,9,10};
+		int t[]={
+				4 ,
+				13,
+				19,
+				20,
+				32,
+				38,
+				42
+		};
 		
-		getPtnMain(t, 4);
+		getPtnMain(t, 1);
+		
+//		System.out.println(getAllpattern(45, 4));
 		
 		System.out.println("end");
 	}
 
 	public static void getPtnMain(int[] t, int picks) {
 		int[] temp=t.clone();
-		for(int i=0;i<t.length-picks+1;i++){
-			temp=removeArray(temp,t[i]);
-			getPtnSub(t[i]+"-", temp, 1, picks);
-			
-		}
+		
+		if(picks==1){
+			for(int i=0;i<t.length;i++){
+				System.out.println((i+1)+"\t"+t[i]);
+			}
+			return;
+		}else{
+			for(int i=0;i<t.length-picks+1;i++){
+				temp=removeArray(temp,t[i]);
+				getPtnSub(t[i]+"-", temp, 1, picks);
+				
+			}
+		}//if-else
 	}
 	
 	private static int getPtnSub(String selected, int[] t, int num, int picks) {
