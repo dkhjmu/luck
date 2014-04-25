@@ -41,6 +41,7 @@ public class SeqAnaMain {
 				"updnCOMPO",
 				"updnCOMPOA",
 				"updnCOMPO확률",
+				"카운트합",
 		};
 		for(int i=0;i<cols.length;i++){
 			System.out.print(cols[i]+"\t");
@@ -84,7 +85,7 @@ public class SeqAnaMain {
 		
 		ArrayList<SeqAnaVO> alist=new ArrayList<SeqAnaVO>();
 		
-		for(int k=201;k<501;k++){
+		for(int k=357;k<358;k++){
 			// gap1, 2~6, 7~11, 12이상
 			int[] gapsC={0,0,0,0}; //전체경우
 			int[] gapsA={0,0,0,0}; //나온경우
@@ -93,8 +94,18 @@ public class SeqAnaMain {
 			int[] starA={0,0,0,0,0}; //계단등장
 			
 			ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
+			
+			int total_cnt=0;
+			int total_cnt2=0;
+			int total_cnt3=0;
 			for(int i=0;i<lList.size();i++){
 				LineAnaVO lineAnaVO = lList.get(i);
+				if(lineAnaVO.getNext()!=0){
+					total_cnt+=lineAnaVO.getC13().val();
+					System.out.println(lineAnaVO.getBnu()+"\t"+lineAnaVO.getC13().val());
+					total_cnt2+=lineAnaVO.getC42().val();
+					total_cnt3+=lineAnaVO.getC100().val();
+				}
 				if(tempList!=null){
 					lineAnaVO.calc(tempList.get(i));
 				}
@@ -170,6 +181,7 @@ public class SeqAnaMain {
 				}
 			}
 			String str=printCA(k, gapsC, gapsA, starC, starA);
+			System.out.print(k+"\t"+total_cnt+"\t"+total_cnt2+"\t"+total_cnt3+"\n");
 			tempList=lList;
 			alist.add(new SeqAnaVO(str));
 		}// seq
@@ -180,7 +192,7 @@ public class SeqAnaMain {
 		for(int i=50;i<alist.size();i++){
 			cnt++;
 			SeqAnaVO vo = alist.get(i);
-			System.out.println(vo);
+			//System.out.println(vo);
 			g01.add(vo.g12.gapA+"", 1);
 			gPtn.add(vo.getParttern(), 1);
 		}
@@ -190,11 +202,10 @@ public class SeqAnaMain {
 		gPtn.printResult();
 	}
 
-	private static String printCA(int seq, int[] gapsC, int[] gapsA, int[] starC,
-			int[] starA) {
+	private static String printCA(int seq, int[] gapsC, int[] gapsA, int[] starC, int[] starA) {
 //		System.out.println(seq+"\t"+printListArray(gapsC)+printListArray(gapsA)+printListArray(starC)+printListArray(starA));
 		String str = seq+"\t"+printListCA(gapsC, gapsA)+printListCA(starC, starA);
-		System.out.println(str);
+		//System.out.print(str);
 		return str;
 	}
 

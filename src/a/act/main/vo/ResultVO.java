@@ -68,6 +68,29 @@ public class ResultVO {
 		bnu7 = -1;
 	}
 	
+	public int[] getArray(boolean bonus){
+		if(bonus==true){
+			int[] result=new int[7];
+			result[0]=bnu1;
+			result[1]=bnu2;
+			result[2]=bnu3;
+			result[3]=bnu4;
+			result[4]=bnu5;
+			result[5]=bnu6;
+			result[6]=bnu7;
+			return result;
+		}else{
+			int[] result=new int[6];
+			result[0]=bnu1;
+			result[1]=bnu2;
+			result[2]=bnu3;
+			result[3]=bnu4;
+			result[4]=bnu5;
+			result[5]=bnu6;
+			return result;
+		}
+	}
+	
 
 	@Override
 	public String toString() {

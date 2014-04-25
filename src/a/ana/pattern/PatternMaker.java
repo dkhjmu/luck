@@ -1,9 +1,10 @@
 package a.ana.pattern;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import a.act.main.vo.IntVO;
-import a.act.main.vo.PtnVO;
+
 
 public class PatternMaker {
 	
@@ -46,46 +47,69 @@ public class PatternMaker {
 				42
 		};
 		
-		getPtnMain(t, 1);
+		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
 		
-//		System.out.println(getAllpattern(45, 4));
+		getPtnMain(t, 2, map);
+		
+		printKeyNVal(map);
 		
 		System.out.println("end");
 	}
 
-	public static void getPtnMain(int[] t, int picks) {
+	public static void printKeyNVal(HashMap<String, IntVO> map) {
+		Iterator<String> iter = map.keySet().iterator();
+		while(iter.hasNext()){
+			String key=iter.next();
+			System.out.println(key+"\t"+map.get(key));
+		}
+	}
+
+	public static HashMap<String, IntVO> getPtnMain(int[] t, int picks, HashMap<String, IntVO> map) {
 		int[] temp=t.clone();
 		
 		if(picks==1){
 			for(int i=0;i<t.length;i++){
-				System.out.println((i+1)+"\t"+t[i]);
+				//System.out.println((i+1)+"\t"+t[i]);
+				map=addMap(t[i]+"", map);
 			}
-			return;
+			return map;
 		}else{
 			for(int i=0;i<t.length-picks+1;i++){
 				temp=removeArray(temp,t[i]);
-				getPtnSub(t[i]+"-", temp, 1, picks);
+				getPtnSub(t[i]+"-", temp, 1, picks, map);
 				
 			}
 		}//if-else
+		return map;
+	}
+
+	private static HashMap<String, IntVO> addMap(String key, HashMap<String, IntVO> map) {
+		IntVO vo = map.get(key);
+		if(vo!=null){
+			vo.add(1);
+		}else{
+			map.put(key, new IntVO(1));
+		}
+		return map;
 	}
 	
-	private static int getPtnSub(String selected, int[] t, int num, int picks) {
+	private static HashMap<String, IntVO> getPtnSub(String selected, int[] t, int num, int picks, HashMap<String, IntVO> map) {
 		//System.out.println(selected);
 		num=num+1;
 		int[] temp=t.clone();
 		if(num==picks){
 			for(int i=0;i<t.length;i++){
 				vv++;
-				System.out.println(vv+"\t"+selected+t[i]);
+//				System.out.println(vv+"\t"+selected+t[i]);
+				map=addMap(selected+t[i]+"", map);
 			}
 		}else{
 			for(int i=0;i<t.length-(picks-num);i++){
 				temp=removeArray(temp,t[i]);
-				getPtnSub(selected+t[i]+"-", temp, num, picks);
+				getPtnSub(selected+t[i]+"-", temp, num, picks, map);
 			}
 		}
-		return 1;
+		return map;
 	}
 
 	public static int[] removeArray(int[] t, int b){
