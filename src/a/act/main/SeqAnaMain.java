@@ -85,7 +85,7 @@ public class SeqAnaMain {
 		
 		ArrayList<SeqAnaVO> alist=new ArrayList<SeqAnaVO>();
 		
-		for(int k=357;k<358;k++){
+		for(int k=201;k<501;k++){
 			// gap1, 2~6, 7~11, 12이상
 			int[] gapsC={0,0,0,0}; //전체경우
 			int[] gapsA={0,0,0,0}; //나온경우

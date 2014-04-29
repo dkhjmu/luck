@@ -47,11 +47,13 @@ public class PatternMaker {
 				42
 		};
 		
-		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
+//		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
+//		
+//		getPtnMain(t, 2, map);
+//		
+//		printKeyNVal(map);
 		
-		getPtnMain(t, 2, map);
-		
-		printKeyNVal(map);
+		System.out.println(getAllpattern(45,4));
 		
 		System.out.println("end");
 	}
@@ -62,6 +64,19 @@ public class PatternMaker {
 			String key=iter.next();
 			System.out.println(key+"\t"+map.get(key));
 		}
+	}
+
+	public static void printKeyNValOver1(HashMap<String, IntVO> map) {
+		Iterator<String> iter = map.keySet().iterator();
+		int total=0;
+		while(iter.hasNext()){
+			String key=iter.next();
+			if(map.get(key).val()>1){
+				System.out.println(key+"\t"+map.get(key));
+			}
+			total++;
+		}
+		System.out.println("Total:"+total);
 	}
 
 	public static HashMap<String, IntVO> getPtnMain(int[] t, int picks, HashMap<String, IntVO> map) {

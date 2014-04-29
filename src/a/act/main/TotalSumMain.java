@@ -1,16 +1,25 @@
 package a.act.main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import a.act.calc.vo.CalcVO;
 import a.act.main.dao.ResultDAO;
+import a.act.main.vo.IntVO;
 import a.act.main.vo.ResultVO;
+import a.ana.pattern.PatternMaker;
 
 public class TotalSumMain {
 	
 	public static void main(String[] args) {
 		ArrayList<ResultVO> list = getResultList();
-		printListResult(list);
+		//printListResult(list);
+		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
+		for(ResultVO vo: list){
+			int[] r=vo.getArray(false);
+			PatternMaker.getPtnMain(r, 4, map);
+		}
+		PatternMaker.printKeyNValOver1(map);
 		System.out.println("End!");
 	}
 
@@ -564,7 +573,7 @@ public class TotalSumMain {
 		dao.add(540,3,12,13,15,34,36,14);
 		dao.add(541,8,13,26,28,32,34,43);
 		dao.add(542,5,6,19,26,41,45,34);
-
+//
 //		System.out.println("GAP2");
 //		Gap2Calc gap2=new Gap2Calc();
 //		ArrayList<CalcVO> gap2Result = gap2.calc(list, 311, 400);
