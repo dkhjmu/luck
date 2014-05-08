@@ -119,17 +119,17 @@ public class SeqAnaMain {
 					}
 					break;
 				case 1:
-				case 2:
-				case 3:
-				case 4:
-				case 5:
-				case 6:
 					//gap 2,3,4,5,6
 					gapsC[1]++;
 					if(lineAnaVO.getNext()!=0){
 						gapsA[1]++;
 					}
 					break;
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+				case 6:
 				case 7:
 				case 8:
 				case 9:

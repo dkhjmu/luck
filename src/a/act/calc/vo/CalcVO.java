@@ -43,7 +43,7 @@ public class CalcVO {
 		return seq+"\t\t"+bnu+mapStr();
 	}
 
-	private String mapStr() {
+	public String mapStr() {
 		String result="";
 		Iterator<String> iter = map.keySet().iterator();
 		while(iter.hasNext()){
@@ -54,6 +54,9 @@ public class CalcVO {
 	}
 
 	public IntVO get(String key) {
+		if(map.get(key)==null){
+			return new IntVO(0);
+		}
 		return map.get(key);
 	}
 
