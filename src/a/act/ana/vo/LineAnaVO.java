@@ -25,6 +25,7 @@ public class LineAnaVO {
 	IntVO cn2;
 	
 	IntVO c42; // 42까지의 sum
+	IntVO c45; // 45까지의 sum
 	IntVO c13; // 13까지의 sum
 	IntVO c100;// 100까지의 sum
 	
@@ -256,6 +257,14 @@ public class LineAnaVO {
 
 	public IntVO getC42() {
 		return c42;
+	}
+
+	public IntVO getC45() {
+		return c45;
+	}
+
+	public void setC45(IntVO c45) {
+		this.c45 = c45;
 	}
 
 	public IntVO getC100() {

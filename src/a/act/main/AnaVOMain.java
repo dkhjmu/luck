@@ -18,7 +18,7 @@ public class AnaVOMain {
 		ArrayList<ResultVO> list = getResultList();
 		printCols();
 		ArrayList<LineAnaVO> tempList=null;
-		for(int k=357;k<358;k++){
+		for(int k=301;k<401;k++){
 			ArrayList<LineAnaVO> lList = getAnaVOList(list, k);
 			for(int i=0;i<lList.size();i++){
 				if(tempList!=null){
@@ -92,6 +92,10 @@ public class AnaVOMain {
 		CountCalc cal42=new CountCalc();
 		ArrayList<CalcVO> c42 = cal42.calc(list, seq-(45-gSe)+1, seq);
 
+		// 45 를 기준으로 한 합계
+		CountCalc cal45=new CountCalc();
+		ArrayList<CalcVO> c45 = cal45.calc(list, seq-(45)+1, seq);
+
 		// 13 를 기준으로 한 합계
 		CountCalc cal13=new CountCalc();
 		ArrayList<CalcVO> c13 = cal13.calc(list, seq-(13)+1, seq);
@@ -142,6 +146,7 @@ public class AnaVOMain {
 			tvo.setCn1(cn1.get(i).get(CountCalc.CNT));
 			tvo.setCn2(cn2.get(i).get(CountCalc.CNT));
 			tvo.setC42(c42.get(i).get(CountCalc.CNT));
+			tvo.setC45(c45.get(i).get(CountCalc.CNT));
 			tvo.setC13(c13.get(i).get(CountCalc.CNT));
 			tvo.setC100(c100.get(i).get(CountCalc.CNT));
 			tvo.setTval(total.get(i).get(T_VAL));

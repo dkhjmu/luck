@@ -10,11 +10,11 @@ public class OnePointMain {
 	
 	public static void main(String[] args) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultList();
-		int seq=302;
+		int seq=499;
 		ArrayList<LineAnaVO> dd = AnaVOMain.getAnaVOList(list, seq);
 		AnaVOMain.printCols();
 		for(int i=0;i<dd.size();i++){
-			if(seq+1>=list.size()){
+			if(seq+1>list.size()){
 				break;
 			}
 			System.out.println(dd.get(i).toString("1"));
