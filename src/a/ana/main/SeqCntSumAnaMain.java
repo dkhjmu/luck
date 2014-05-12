@@ -6,13 +6,36 @@ import a.act.ana.vo.LineAnaVO;
 import a.act.ana.vo.SeqStatVO;
 import a.act.calc.vo.CalcVO;
 import a.act.main.AnaVOMain;
+import a.act.main.vo.IntVO;
 import a.act.main.vo.ResultVO;
 
 public class SeqCntSumAnaMain {
 	
 	public static void main(String[] args) {
-		getSeqStatList();
+		ArrayList<SeqStatVO> list = getSeqStatList();
+		int size=list.size();
 		
+		CalcVO gap=new CalcVO(0, 0);
+		for(int i=size-100;i<size;i++){
+			SeqStatVO vo=list.get(i);
+			ArrayList<IntVO> gl = vo.getGaps();
+			for(IntVO v:gl){
+				System.out.println(vo.getSeq()+"\t"+v.toString());
+				gap.add(v.toString(), 1);
+			}
+			System.out.println(vo.getGapFullPtn());
+		}
+		gap.printResult();
+	}
+
+	public static int getMaxSeq(ArrayList<SeqStatVO> list) {
+		int max=-1;
+		for (SeqStatVO vo : list) {
+			if(vo.getSeq() > max){
+				max = vo.getSeq();
+			}
+		}
+		return max;
 	}
 
 	public static ArrayList<SeqStatVO> getSeqStatList() {
@@ -21,10 +44,10 @@ public class SeqCntSumAnaMain {
 		ArrayList<LineAnaVO> tempList=null;
 		ArrayList<SeqStatVO> seqList=new ArrayList<SeqStatVO>();
 
-		SeqStatVO.printHeader();
+		//SeqStatVO.printHeader();
 		
 		//세야할 대상
-		for(int k=201;k<list.size();k++){
+		for(int k=401;k<501;k++){
 			ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
 			SeqStatVO vo=new SeqStatVO(k);
 			for(int i=0;i<lList.size();i++){
@@ -44,7 +67,7 @@ public class SeqCntSumAnaMain {
 				
 			}// for in
 			seqList.add(vo);
-			System.out.println(vo);
+			//System.out.println(vo);
 		}	
 		
 		return seqList;

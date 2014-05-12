@@ -18,7 +18,7 @@ public class AnaVOMain {
 		ArrayList<ResultVO> list = getResultList();
 		printCols();
 		ArrayList<LineAnaVO> tempList=null;
-		for(int k=301;k<401;k++){
+		for(int k=401;k<501;k++){
 			ArrayList<LineAnaVO> lList = getAnaVOList(list, k);
 			for(int i=0;i<lList.size();i++){
 				if(tempList!=null){
@@ -35,6 +35,7 @@ public class AnaVOMain {
 				"NEXT",
 				"seq",
 				"bnu",
+				"isBonus",
 				"고저",
 				"상하",
 				"총량",
@@ -135,6 +136,11 @@ public class AnaVOMain {
 			
 			if(list.get(seq).isInBonus(i+1)){
 				tvo.setNext(seq+1);
+				if((i+1)==list.get(seq).get(7)){
+					tvo.setBonus(true);
+				}else{
+					tvo.setBonus(false);
+				}
 			}			
 			
 			//gap 

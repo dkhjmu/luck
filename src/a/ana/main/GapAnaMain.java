@@ -1,10 +1,8 @@
 package a.ana.main;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import a.act.ana.vo.LineAnaVO;
-import a.act.ana.vo.SeqAnaVO;
 import a.act.calc.vo.CalcVO;
 import a.act.main.AnaVOMain;
 import a.act.main.vo.ResultVO;

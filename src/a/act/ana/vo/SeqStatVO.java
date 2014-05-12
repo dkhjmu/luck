@@ -15,9 +15,10 @@ public class SeqStatVO {
 	int oddCnt=0;
 	String gapFullPtn="";
 	ArrayList<IntVO> gaps;
-	int spg0=0;//짧은 패턴 0번째 대략 0~1
-	int spg1=0;//짧은 패턴 1번째 대략 2~7
-	int spg2=0;//짧은 패턴 2번째 대략 8이상
+	int spg0=0;//짧은 패턴 0번째 대략 0
+	int spg1=0;//짧은 패턴 1번째 대략 1
+	int spg2=0;//짧은 패턴 2번째 대략 2~7
+	int spg3=0;//짧은 패턴 2번째 대략 8이상
 	int c0=0; //1~9
 	int c10=0;//10~19
 	int c20=0;
@@ -72,6 +73,14 @@ public class SeqStatVO {
 		this.oddCnt = oddCnt;
 	}
 	public String getGapFullPtn() {
+		Collections.sort(gaps);
+		for(int i=0;i<gaps.size();i++){
+			if((i+1)!=gaps.size()){
+				gapFullPtn=gapFullPtn+gaps.get(i).toString()+"\t";
+			}else{
+				gapFullPtn=gapFullPtn+gaps.get(i).toString();
+			}
+		}
 		return gapFullPtn;
 	}
 	public void setGapFullPtn(String gapFullPtn) {
@@ -143,9 +152,12 @@ public class SeqStatVO {
 		int v=gap.val();
 		switch (v) {
 		case 0:
-		case 1:
 			//gap 0, 1
 			spg0++;
+			break;
+		case 1:
+			//gap 0, 1
+			spg1++;
 			break;
 		case 2:
 		case 3:
@@ -154,17 +166,57 @@ public class SeqStatVO {
 		case 6:
 		case 7:
 			//gap 2,3,4,5,6,7
-			spg1++;
+			spg2++;
 			break;
 		default:
 			//gap 2,3,4,5,6,7
-			spg2++;
+			spg3++;
 			break;
 		}
 		
 	}
 	
 	
+	public ArrayList<IntVO> getGaps() {
+		return gaps;
+	}
+
+	public void setGaps(ArrayList<IntVO> gaps) {
+		this.gaps = gaps;
+	}
+
+	public int getSpg0() {
+		return spg0;
+	}
+
+	public void setSpg0(int spg0) {
+		this.spg0 = spg0;
+	}
+
+	public int getSpg1() {
+		return spg1;
+	}
+
+	public void setSpg1(int spg1) {
+		this.spg1 = spg1;
+	}
+
+	public int getSpg2() {
+		return spg2;
+	}
+
+	public void setSpg2(int spg2) {
+		this.spg2 = spg2;
+	}
+
+	public int getSpg3() {
+		return spg3;
+	}
+
+	public void setSpg3(int spg3) {
+		this.spg3 = spg3;
+	}
+
 	public static void printHeader(){
 		String str=
 				"seq"+"\t"+

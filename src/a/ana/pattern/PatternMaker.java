@@ -37,15 +37,15 @@ public class PatternMaker {
 	public static void main(String[] args) {
 		System.out.println("start");
 //		int t[]={1,2,3,4,5,6,7,8,9,10};
-		int t[]={
-				4 ,
-				13,
-				19,
-				20,
-				32,
-				38,
-				42
-		};
+//		int t[]={
+//				4 ,
+//				13,
+//				19,
+//				20,
+//				32,
+//				38,
+//				42
+//		};
 		
 //		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
 //		

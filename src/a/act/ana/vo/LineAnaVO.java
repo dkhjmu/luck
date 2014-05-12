@@ -46,7 +46,16 @@ public class LineAnaVO {
 	int updn13;
 	int updnLast;
 	
-	
+	boolean bonus;
+
+	public boolean isBonus() {
+		return bonus;
+	}
+
+	public void setBonus(boolean bonus) {
+		this.bonus = bonus;
+	}
+
 	public LineAnaVO(int seq, int bnu){
 		this.seq = seq;
 		this.bnu=bnu;
@@ -182,6 +191,7 @@ public class LineAnaVO {
 		String str=  next+"\t"
 				    +seq+"\t"
 				    +bnu+"\t"
+				    +bonus+"\t"
 					+topbotType+"\t"
 					+updownType+"\t"
 					+totalUPType+"\t"
