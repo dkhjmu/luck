@@ -18,7 +18,7 @@ public class AnaVOMain {
 		ArrayList<ResultVO> list = getResultList();
 		printCols();
 		ArrayList<LineAnaVO> tempList=null;
-		for(int k=401;k<501;k++){
+		for(int k=236;k<501;k++){
 			ArrayList<LineAnaVO> lList = getAnaVOList(list, k);
 			for(int i=0;i<lList.size();i++){
 				if(tempList!=null){

@@ -54,13 +54,13 @@ public class GapAnaMain {
 	}
 
 	public static void secFlow() {
-		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus();
+		ArrayList<ResultVO> list = AnaVOMain.getResultList();
 //		AnaVOMain.printCols();
 		ArrayList<LineAnaVO> tempList=null;
 		//세야할 대상
-		int bnu = 5;
+		int bnu = 0;
+		CalcVO gap2=new CalcVO(bnu, 0);
 		for(int k=201;k<501;k++){
-			CalcVO gap2=new CalcVO(bnu, 0);
 			CalcVO gap3=new CalcVO(bnu, 0);
 			ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
 			for(int i=0;i<lList.size();i++){
@@ -68,17 +68,20 @@ public class GapAnaMain {
 				if(tempList!=null){
 					lineAnaVO.calc(tempList.get(i));
 				}
-				if(lineAnaVO.getGap().val()==bnu){
-					if( lineAnaVO.getNext()!=0){
-						gap2.add(lineAnaVO.getGap().val()+"", 1);
-					}
-					gap3.add(lineAnaVO.getGap().val()+"", 1);
+//				if(lineAnaVO.getGap().val()==bnu){
+//					if( lineAnaVO.getNext()!=0){
+//						gap2.add(lineAnaVO.getGap().val()+"", 1);
+//					}
+//					gap3.add(lineAnaVO.getGap().val()+"", 1);
+//				}
+				if(list.get(lineAnaVO.getSeq()-1).get(7)==lineAnaVO.getBnu() && lineAnaVO.getNext()!=0){
+					gap2.add("Bonus", 1);
 				}
 			}// for in
 			
-			System.out.println(k+"\t"+gap2.get(""+bnu)+"\t"+gap3.get(""+bnu));
 			
 		}// for out
+		System.out.println(gap2.get("Bonus"));
 	}
 	
 

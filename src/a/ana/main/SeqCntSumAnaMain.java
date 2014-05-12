@@ -1,6 +1,7 @@
 package a.ana.main;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import a.act.ana.vo.LineAnaVO;
 import a.act.ana.vo.SeqStatVO;
@@ -16,11 +17,15 @@ public class SeqCntSumAnaMain {
 		int size=list.size();
 		
 		CalcVO gap=new CalcVO(0, 0);
-		for(int i=size-100;i<size;i++){
+		for(int i=0;i<size;i++){
 			SeqStatVO vo=list.get(i);
 			ArrayList<IntVO> gl = vo.getGaps();
-			for(IntVO v:gl){
-				System.out.println(vo.getSeq()+"\t"+v.toString());
+			Collections.sort(gl);
+			for(int j=0;j<gl.size();j++){
+				IntVO v=gl.get(j);
+				if((j-1)>-1 && v.val()==gl.get(j-1).val()){
+					continue;
+				}
 				gap.add(v.toString(), 1);
 			}
 			System.out.println(vo.getGapFullPtn());
@@ -39,7 +44,7 @@ public class SeqCntSumAnaMain {
 	}
 
 	public static ArrayList<SeqStatVO> getSeqStatList() {
-		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus();
+		ArrayList<ResultVO> list = AnaVOMain.getResultList();
 
 		ArrayList<LineAnaVO> tempList=null;
 		ArrayList<SeqStatVO> seqList=new ArrayList<SeqStatVO>();
