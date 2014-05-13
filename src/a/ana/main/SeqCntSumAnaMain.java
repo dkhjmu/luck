@@ -28,9 +28,9 @@ public class SeqCntSumAnaMain {
 				}
 				gap.add(v.toString(), 1);
 			}
-			System.out.println(vo.getGapFullPtn());
+//			System.out.println(vo.getGapFullPtn());
 		}
-		gap.printResult();
+//		gap.printResult();
 	}
 
 	public static int getMaxSeq(ArrayList<SeqStatVO> list) {
@@ -49,12 +49,12 @@ public class SeqCntSumAnaMain {
 		ArrayList<LineAnaVO> tempList=null;
 		ArrayList<SeqStatVO> seqList=new ArrayList<SeqStatVO>();
 
-		//SeqStatVO.printHeader();
+		SeqStatVO.printHeader();
 		
 		//세야할 대상
 		for(int k=401;k<501;k++){
 			ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
-			SeqStatVO vo=new SeqStatVO(k);
+			SeqStatVO vo=new SeqStatVO(k+1);
 			for(int i=0;i<lList.size();i++){
 				LineAnaVO lineAnaVO = lList.get(i);
 				if(tempList!=null){
@@ -72,7 +72,7 @@ public class SeqCntSumAnaMain {
 				
 			}// for in
 			seqList.add(vo);
-			//System.out.println(vo);
+			System.out.println(vo);
 		}	
 		
 		return seqList;
