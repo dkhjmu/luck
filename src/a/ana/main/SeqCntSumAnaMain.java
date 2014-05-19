@@ -60,6 +60,9 @@ public class SeqCntSumAnaMain {
 				if(tempList!=null){
 					lineAnaVO.calc(tempList.get(i));
 				}
+				
+				vo.setNspgStats(lineAnaVO.getGap());
+				
 				if( lineAnaVO.getNext()!=0){
 					//bnu
 					vo.setBnuStat(lineAnaVO.getBnu());

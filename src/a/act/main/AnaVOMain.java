@@ -164,7 +164,14 @@ public class AnaVOMain {
 			tvo.calc(null);
 			lList.add(tvo);
 		}
+		
+		setHindex(lList, 13);
+		
 		return lList;
+	}
+
+	private static void setHindex(ArrayList<LineAnaVO> lList, int i) {
+		
 	}
 
 	public static ArrayList<ResultVO> getResultList() {

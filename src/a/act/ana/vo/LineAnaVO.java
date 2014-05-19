@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import a.act.main.vo.IntVO;
 
-public class LineAnaVO {
+public class LineAnaVO implements Comparable<LineAnaVO> {
 	
 	int bnu;
 	
@@ -45,6 +45,9 @@ public class LineAnaVO {
 	int updn42;
 	int updn13;
 	int updnLast;
+	
+	int h_index;
+	int h_order;
 	
 	boolean bonus;
 
@@ -447,5 +450,26 @@ public class LineAnaVO {
 
 	public void setGap3(IntVO gap3) {
 		this.gap3 = gap3;
+	}
+
+	public int getHindex() {
+		return h_index;
+	}
+
+	public void setHindex(int h_index) {
+		this.h_index = h_index;
+	}
+
+	public int getHorder() {
+		return h_order;
+	}
+
+	public void setHorder(int h_order) {
+		this.h_order = h_order;
+	}
+
+	@Override
+	public int compareTo(LineAnaVO o) {
+		return o.getC100().val()-this.getC100().val();
 	}
 }

@@ -19,6 +19,10 @@ public class SeqStatVO {
 	int spg1=0;//짧은 패턴 1번째 대략 1
 	int spg2=0;//짧은 패턴 2번째 대략 2~7
 	int spg3=0;//짧은 패턴 2번째 대략 8이상
+	int nspg0=0;
+	int nspg1=0;
+	int nspg2=0;
+	int nspg3=0;
 	int c0=0; //1~9
 	int c10=0;//10~19
 	int c20=0;
@@ -176,6 +180,34 @@ public class SeqStatVO {
 		
 	}
 	
+	public void setNspgStats(IntVO gap) {
+		int v=gap.val();
+		switch (v) {
+		case 0:
+			//gap 0, 1
+			nspg0++;
+			break;
+		case 1:
+			//gap 0, 1
+			nspg1++;
+			break;
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+			//gap 2,3,4,5,6,7
+			nspg2++;
+			break;
+		default:
+			//gap 2,3,4,5,6,7
+			nspg3++;
+			break;
+		}
+		
+	}
+	
 	
 	public ArrayList<IntVO> getGaps() {
 		return gaps;
@@ -217,6 +249,38 @@ public class SeqStatVO {
 		this.spg3 = spg3;
 	}
 
+	public int getNspg0() {
+		return nspg0;
+	}
+
+	public void setNspg0(int nspg0) {
+		this.nspg0 = nspg0;
+	}
+
+	public int getNspg1() {
+		return nspg1;
+	}
+
+	public void setNspg1(int nspg1) {
+		this.nspg1 = nspg1;
+	}
+
+	public int getNspg2() {
+		return nspg2;
+	}
+
+	public void setNspg2(int nspg2) {
+		this.nspg2 = nspg2;
+	}
+
+	public int getNspg3() {
+		return nspg3;
+	}
+
+	public void setNspg3(int nspg3) {
+		this.nspg3 = nspg3;
+	}
+
 	public static void printHeader(){
 		String str=
 				"seq"+"\t"+
@@ -234,6 +298,11 @@ public class SeqStatVO {
 				"spg0"+"\t"+//짧은 패턴 0번째 대략 0~1
 				"spg1"+"\t"+//짧은 패턴 1번째 대략 2~7
 				"spg2"+"\t"+//짧은 패턴 2번째 대략 8이상
+				"spg3"+"\t"+//짧은 패턴 2번째 대략 8이상
+				"nspg0"+"\t"+//짧은 패턴 0번째 대략 0~1
+				"nspg1"+"\t"+//짧은 패턴 1번째 대략 2~7
+				"nspg2"+"\t"+//짧은 패턴 2번째 대략 8이상
+				"nspg3"+"\t"+//짧은 패턴 2번째 대략 8이상
 				"gapFullPtn"
 		;
 		System.out.println(str);
@@ -266,10 +335,16 @@ public class SeqStatVO {
 				spg0+"\t"+//짧은 패턴 0번째 대략 0~1
 				spg1+"\t"+//짧은 패턴 1번째 대략 2~7
 				spg2+"\t"+//짧은 패턴 2번째 대략 8이상
+				spg3+"\t"+//짧은 패턴 2번째 대략 8이상
+				nspg0+"\t"+//짧은 패턴 0번째 대략 0~1
+				nspg1+"\t"+//짧은 패턴 1번째 대략 2~7
+				nspg2+"\t"+//짧은 패턴 2번째 대략 8이상
+				nspg3+"\t"+//짧은 패턴 2번째 대략 8이상
 				gapFullPtn
 		;
 		
 		return str;
 	}
+	
 	
 }
