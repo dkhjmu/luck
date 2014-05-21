@@ -29,6 +29,17 @@ public class SeqStatVO {
 	int c30=0;
 	int c40=0;
 	
+	int h100a=0;
+	int h45a=0;
+	int h13a=0;
+	int h100c=0;
+	int h45c=0;
+	int h13c=0;
+	
+	int hta=0;
+	int htc=0;
+	
+	
 	public SeqStatVO(int seq){
 		this.seq=seq;
 		gaps=new ArrayList<IntVO>();
@@ -208,6 +219,37 @@ public class SeqStatVO {
 		
 	}
 	
+	public void setHindexStatus(LineAnaVO lineAnaVO) {
+		switch(lineAnaVO.getHindex()){
+		case 100:
+			h100a=h100a+1;
+			if(lineAnaVO.getNext()!=0){
+				h100c=h100c+1;
+			}
+			break;
+		case 45:
+			h45a=h45a+1;
+			if(lineAnaVO.getNext()!=0){
+				h45c=h45c+1;
+			}
+			break;
+		case 13:
+			h13a=h13a+1;
+			if(lineAnaVO.getNext()!=0){
+				h13c=h13c+1;
+			}
+			break;
+		}
+		
+		if(lineAnaVO.getHindex()!=0){
+			hta=hta+1;
+			if(lineAnaVO.getNext()!=0){
+				htc=htc+1;
+			}
+		}
+		
+	}
+	
 	
 	public ArrayList<IntVO> getGaps() {
 		return gaps;
@@ -281,6 +323,54 @@ public class SeqStatVO {
 		this.nspg3 = nspg3;
 	}
 
+	public int getH100a() {
+		return h100a;
+	}
+
+	public int getH45a() {
+		return h45a;
+	}
+
+	public int getH13a() {
+		return h13a;
+	}
+
+	public int getH100c() {
+		return h100c;
+	}
+
+	public int getH45c() {
+		return h45c;
+	}
+
+	public int getH13c() {
+		return h13c;
+	}
+
+	public void setH100a(int h100a) {
+		this.h100a = h100a;
+	}
+
+	public void setH45a(int h45a) {
+		this.h45a = h45a;
+	}
+
+	public void setH13a(int h13a) {
+		this.h13a = h13a;
+	}
+
+	public void setH100c(int h100c) {
+		this.h100c = h100c;
+	}
+
+	public void setH45c(int h45c) {
+		this.h45c = h45c;
+	}
+
+	public void setH13c(int h13c) {
+		this.h13c = h13c;
+	}
+
 	public static void printHeader(){
 		String str=
 				"seq"+"\t"+
@@ -290,6 +380,14 @@ public class SeqStatVO {
 				"cnt100Sum"+"\t"+
 				"evenCnt"+"\t"+
 				"oddCnt"+"\t"+
+				"100a"+"\t"+
+				"100c"+"\t"+
+				"45a"+"\t"+
+				"45c"+"\t"+
+				"13a"+"\t"+
+				"13c"+"\t"+
+				"hta"+"\t"+
+				"htc"+"\t"+
 				"c0"+"\t"+ //1~9
 				"c10"+"\t"+//10~19
 				"c20"+"\t"+
@@ -327,6 +425,14 @@ public class SeqStatVO {
 				cnt100Sum+"\t"+
 				evenCnt+"\t"+
 				oddCnt+"\t"+
+				h100a+"\t"+
+				h100c+"\t"+
+				h45a+"\t"+
+				h45c+"\t"+
+				h13a+"\t"+
+				h13c+"\t"+
+				hta+"\t"+
+				htc+"\t"+
 				c0+"\t"+ //1~9
 				c10+"\t"+//10~19
 				c20+"\t"+
@@ -345,6 +451,6 @@ public class SeqStatVO {
 		
 		return str;
 	}
-	
+
 	
 }

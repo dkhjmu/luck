@@ -13,6 +13,10 @@ public class GapCalc {
 		if(clist==null){
 			clist=new ArrayList<CalcVO>();
 		}
+		int size=list.size();
+		if(end>size){
+			end=size;
+		}
 		for(int i=1;i<=45;i++){
 			CalcVO vo=new CalcVO(end, i);
 			vo.add(GAP, 0);

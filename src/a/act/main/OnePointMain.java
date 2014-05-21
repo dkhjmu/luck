@@ -17,7 +17,8 @@ public class OnePointMain {
 			if(seq+1>list.size()){
 				break;
 			}
-			System.out.println(dd.get(i).toString("1"));
+			LineAnaVO vo = dd.get(i);
+			System.out.println(vo.getBnu()+"\t"+vo.getHorder()+"\t"+vo.getC13().val()+"\t"+vo.getHindex());
 		}
 	}
 

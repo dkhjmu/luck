@@ -198,6 +198,7 @@ public class LineAnaVO implements Comparable<LineAnaVO> {
 					+topbotType+"\t"
 					+updownType+"\t"
 					+totalUPType+"\t"
+					+h_index+"\t"
 					+gap+"\t"
 					+gap2+"\t"
 					+gap3+"\t"
@@ -471,5 +472,15 @@ public class LineAnaVO implements Comparable<LineAnaVO> {
 	@Override
 	public int compareTo(LineAnaVO o) {
 		return o.getC100().val()-this.getC100().val();
+	}
+
+	public int getCodeVal(int code) {
+		if(code==100){
+			return c100.val();
+		}else if(code==45){
+			return c45.val();
+		}else{
+			return c13.val();
+		}
 	}
 }

@@ -17,17 +17,23 @@ public class AnaVOMain {
 	public static void main(String[] args) {
 		ArrayList<ResultVO> list = getResultList();
 		printCols();
-		ArrayList<LineAnaVO> tempList=null;
-		for(int k=236;k<501;k++){
-			ArrayList<LineAnaVO> lList = getAnaVOList(list, k);
-			for(int i=0;i<lList.size();i++){
-				if(tempList!=null){
-					lList.get(i).calc(tempList.get(i));
-				}
-				System.out.println(lList.get(i));
-			}
-			tempList=lList;
+//		ArrayList<LineAnaVO> tempList=null;
+//		for(int k=400;k<501;k++){
+//			ArrayList<LineAnaVO> lList = getAnaVOList(list, k);
+//			for(int i=0;i<lList.size();i++){
+//				if(tempList!=null){
+//					lList.get(i).calc(tempList.get(i));
+//				}
+//				System.out.println(lList.get(i));
+//			}
+//			tempList=lList;
+//		}
+		
+		ArrayList<LineAnaVO> lList = getAnaVOList(list, 501);
+		for(int i=0;i<lList.size();i++){
+			System.out.println(lList.get(i));
 		}
+		
 	}
 
 	public static void printCols() {
@@ -39,6 +45,7 @@ public class AnaVOMain {
 				"고저",
 				"상하",
 				"총량",
+				"h-index",
 				"gap",
 				"gap2",
 				"gap3",
@@ -134,7 +141,7 @@ public class AnaVOMain {
 		for(int i=0;i<45;i++){
 			LineAnaVO tvo=new LineAnaVO(seq, i+1);
 			
-			if(list.get(seq).isInBonus(i+1)){
+			if(list.size()>=(seq+1) && list.get(seq).isInBonus(i+1)){
 				tvo.setNext(seq+1);
 				if((i+1)==list.get(seq).get(7)){
 					tvo.setBonus(true);
@@ -165,13 +172,57 @@ public class AnaVOMain {
 			lList.add(tvo);
 		}
 		
-		setHindex(lList, 13);
+		lList=setHindex(lList, 100);
+		lList=setHindex(lList, 45);
+		lList=setHindex(lList, 13);
 		
 		return lList;
 	}
 
-	private static void setHindex(ArrayList<LineAnaVO> lList, int i) {
+	private static ArrayList<LineAnaVO> setHindex(ArrayList<LineAnaVO> lList, int code) {
 		
+		ArrayList<LineAnaVO> newOne=new ArrayList<LineAnaVO>();
+		
+		int size=lList.size();
+		
+		while(newOne.size()<size){
+			int max=-1;
+			int tmp=-1;
+			int index=-1;
+			
+			for(int i=0;i<lList.size();i++){
+				LineAnaVO vo = lList.get(i);
+				tmp=vo.getCodeVal(code);
+				
+				if(max<tmp){
+					max=tmp;
+					index=i;
+				}
+			}
+			newOne.add(lList.get(index));
+			lList.remove(index);
+		}
+		
+		int h_index = 0;
+		
+		for(int i=0;i<newOne.size();i++){
+			LineAnaVO vo = newOne.get(i);
+			vo.setHorder(i+1);
+			
+			if(vo.getCodeVal(code) >= (i+1)){
+				h_index = i+1;
+			}
+		}
+		
+		for(int i=0;i<newOne.size();i++){
+			LineAnaVO vo = newOne.get(i);
+			if(vo.getHorder()<=h_index){
+				vo.setHindex(code);
+			}
+		}
+		
+		
+		return newOne;
 	}
 
 	public static ArrayList<ResultVO> getResultList() {

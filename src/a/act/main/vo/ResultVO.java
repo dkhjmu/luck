@@ -1,5 +1,7 @@
 package a.act.main.vo;
 
+import java.util.Collections;
+
 public class ResultVO {
 	int seq;
 	int bnu1;
@@ -78,6 +80,7 @@ public class ResultVO {
 			result[4]=bnu5;
 			result[5]=bnu6;
 			result[6]=bnu7;
+			
 			return result;
 		}else{
 			int[] result=new int[6];

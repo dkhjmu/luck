@@ -1,5 +1,6 @@
 package a.ana.pattern;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -80,6 +81,7 @@ public class PatternMaker {
 	}
 
 	public static HashMap<String, IntVO> getPtnMain(int[] t, int picks, HashMap<String, IntVO> map) {
+		Arrays.sort(t);
 		int[] temp=t.clone();
 		
 		if(picks==1){
@@ -127,7 +129,7 @@ public class PatternMaker {
 		return map;
 	}
 
-	public static int[] removeArray(int[] t, int b){
+	private static int[] removeArray(int[] t, int b){
 		int[] r=new int[t.length-1];
 		int j=0;
 		for(int i=0;i<t.length;i++){

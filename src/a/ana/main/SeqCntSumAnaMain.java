@@ -52,7 +52,7 @@ public class SeqCntSumAnaMain {
 		SeqStatVO.printHeader();
 		
 		//세야할 대상
-		for(int k=401;k<501;k++){
+		for(int k=301;k<501;k++){
 			ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
 			SeqStatVO vo=new SeqStatVO(k+1);
 			for(int i=0;i<lList.size();i++){
@@ -62,6 +62,7 @@ public class SeqCntSumAnaMain {
 				}
 				
 				vo.setNspgStats(lineAnaVO.getGap());
+				vo.setHindexStatus(lineAnaVO);
 				
 				if( lineAnaVO.getNext()!=0){
 					//bnu
