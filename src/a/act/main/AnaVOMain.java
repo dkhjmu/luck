@@ -210,7 +210,7 @@ public class AnaVOMain {
 			vo.setHorder(i+1);
 			
 			if(vo.getCodeVal(code) >= (i+1)){
-				h_index = i+1;
+				h_index = i;
 			}
 		}
 		
