@@ -100,7 +100,7 @@ public class PatternMaker {
 		return map;
 	}
 
-	private static HashMap<String, IntVO> addMap(String key, HashMap<String, IntVO> map) {
+	public static HashMap<String, IntVO> addMap(String key, HashMap<String, IntVO> map) {
 		IntVO vo = map.get(key);
 		if(vo!=null){
 			vo.add(1);

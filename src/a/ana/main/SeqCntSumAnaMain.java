@@ -2,6 +2,7 @@ package a.ana.main;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import a.act.ana.vo.LineAnaVO;
 import a.act.ana.vo.SeqStatVO;
@@ -9,28 +10,29 @@ import a.act.calc.vo.CalcVO;
 import a.act.main.AnaVOMain;
 import a.act.main.vo.IntVO;
 import a.act.main.vo.ResultVO;
+import a.ana.pattern.PatternMaker;
 
 public class SeqCntSumAnaMain {
 	
 	public static void main(String[] args) {
 		ArrayList<SeqStatVO> list = getSeqStatList();
 		int size=list.size();
-		
-		CalcVO gap=new CalcVO(0, 0);
+		System.out.println(size);
+		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
 		for(int i=0;i<size;i++){
 			SeqStatVO vo=list.get(i);
 			ArrayList<IntVO> gl = vo.getGaps();
 			Collections.sort(gl);
-			for(int j=0;j<gl.size();j++){
+			String gPtn = "";
+			for(int j=0;j<2;j++){
 				IntVO v=gl.get(j);
-				if((j-1)>-1 && v.val()==gl.get(j-1).val()){
-					continue;
-				}
-				gap.add(v.toString(), 1);
+				gPtn=gPtn+v.toString()+"\t";
 			}
 //			System.out.println(vo.getGapFullPtn());
+			PatternMaker.addMap(gPtn, map);
 		}
 //		gap.printResult();
+		PatternMaker.printKeyNVal(map);
 	}
 
 	public static int getMaxSeq(ArrayList<SeqStatVO> list) {
@@ -44,17 +46,17 @@ public class SeqCntSumAnaMain {
 	}
 
 	public static ArrayList<SeqStatVO> getSeqStatList() {
-		ArrayList<ResultVO> list = AnaVOMain.getResultList();
+		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus();
 
 		ArrayList<LineAnaVO> tempList=null;
 		ArrayList<SeqStatVO> seqList=new ArrayList<SeqStatVO>();
 
-		SeqStatVO.printHeader();
+		//SeqStatVO.printHeader();
 		
 		//세야할 대상
 		for(int k=301;k<501;k++){
 			ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
-			SeqStatVO vo=new SeqStatVO(k+1);
+			SeqStatVO vo=new SeqStatVO(k);
 			for(int i=0;i<lList.size();i++){
 				LineAnaVO lineAnaVO = lList.get(i);
 				if(tempList!=null){
@@ -76,7 +78,7 @@ public class SeqCntSumAnaMain {
 				
 			}// for in
 			seqList.add(vo);
-			System.out.println(vo);
+			//System.out.println(vo);
 		}	
 		
 		return seqList;

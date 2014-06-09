@@ -15,7 +15,8 @@ public class AnaVOMain {
 	private static final String T_VAL = "TVAL";
 
 	public static void main(String[] args) {
-		ArrayList<ResultVO> list = getResultList();
+		ArrayList<ResultVO> list = getResultListNoBonus();
+//		ArrayList<ResultVO> list = getResultList();
 		printCols();
 //		ArrayList<LineAnaVO> tempList=null;
 //		for(int k=400;k<501;k++){
