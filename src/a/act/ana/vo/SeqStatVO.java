@@ -39,6 +39,9 @@ public class SeqStatVO {
 	int hta=0;
 	int htc=0;
 	
+	int h13_g0a=0;
+	int h13_g0c=0;
+	
 	
 	public SeqStatVO(int seq){
 		this.seq=seq;
@@ -371,6 +374,23 @@ public class SeqStatVO {
 		this.h13c = h13c;
 	}
 
+
+	public int getH13_g0a() {
+		return h13_g0a;
+	}
+
+	public void setH13_g0a(int h13_g0a) {
+		this.h13_g0a = h13_g0a;
+	}
+
+	public int getH13_g0c() {
+		return h13_g0c;
+	}
+
+	public void setH13_g0c(int h13_g0c) {
+		this.h13_g0c = h13_g0c;
+	}
+
 	public static void printHeader(){
 		String str=
 				"seq"+"\t"+
@@ -388,6 +408,8 @@ public class SeqStatVO {
 				"13c"+"\t"+
 				"hta"+"\t"+
 				"htc"+"\t"+
+				"h13_gap0a"+"\t"+
+				"h13_gap0c"+"\t"+
 				"c0"+"\t"+ //1~9
 				"c10"+"\t"+//10~19
 				"c20"+"\t"+
@@ -433,6 +455,8 @@ public class SeqStatVO {
 				h13c+"\t"+
 				hta+"\t"+
 				htc+"\t"+
+				h13_g0a+"\t"+
+				h13_g0c+"\t"+
 				c0+"\t"+ //1~9
 				c10+"\t"+//10~19
 				c20+"\t"+

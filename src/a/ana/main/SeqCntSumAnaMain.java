@@ -17,7 +17,6 @@ public class SeqCntSumAnaMain {
 	public static void main(String[] args) {
 		ArrayList<SeqStatVO> list = getSeqStatList();
 		int size=list.size();
-		System.out.println(size);
 		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
 		for(int i=0;i<size;i++){
 			SeqStatVO vo=list.get(i);
@@ -32,7 +31,7 @@ public class SeqCntSumAnaMain {
 			PatternMaker.addMap(gPtn, map);
 		}
 //		gap.printResult();
-		PatternMaker.printKeyNVal(map);
+//		PatternMaker.printKeyNVal(map);
 	}
 
 	public static int getMaxSeq(ArrayList<SeqStatVO> list) {
@@ -51,12 +50,12 @@ public class SeqCntSumAnaMain {
 		ArrayList<LineAnaVO> tempList=null;
 		ArrayList<SeqStatVO> seqList=new ArrayList<SeqStatVO>();
 
-		//SeqStatVO.printHeader();
+		SeqStatVO.printHeader();
 		
 		//세야할 대상
 		for(int k=301;k<501;k++){
 			ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
-			SeqStatVO vo=new SeqStatVO(k);
+			SeqStatVO vo=new SeqStatVO(k+1);
 			for(int i=0;i<lList.size();i++){
 				LineAnaVO lineAnaVO = lList.get(i);
 				if(tempList!=null){
@@ -76,9 +75,16 @@ public class SeqCntSumAnaMain {
 					vo.setCnt100Sum(vo.getCnt100Sum()+lineAnaVO.getC100().val());
 				}
 				
+				if(lineAnaVO.getGap().val()==0 && lineAnaVO.getHindex()==13){
+					vo.setH13_g0a(vo.getH13_g0a()+1);
+					if( lineAnaVO.getNext()!=0){
+						vo.setH13_g0c(vo.getH13_g0c()+1);
+					}
+				}
+				
 			}// for in
 			seqList.add(vo);
-			//System.out.println(vo);
+			System.out.println(vo);
 		}	
 		
 		return seqList;
