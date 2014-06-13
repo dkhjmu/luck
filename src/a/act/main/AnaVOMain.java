@@ -30,7 +30,7 @@ public class AnaVOMain {
 //			tempList=lList;
 //		}
 		
-		ArrayList<LineAnaVO> lList = getAnaVOList(list, 501);
+		ArrayList<LineAnaVO> lList = getAnaVOList(list, 500);
 		for(int i=0;i<lList.size();i++){
 			System.out.println(lList.get(i));
 		}

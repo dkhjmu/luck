@@ -56,7 +56,7 @@ public class SeqCntSumAnaMain {
 		//세야할 대상
 		for(int k=301;k<501;k++){
 			ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
-			SeqStatVO vo=new SeqStatVO(k);
+			SeqStatVO vo=new SeqStatVO(k+1);
 			for(int i=0;i<lList.size();i++){
 				LineAnaVO lineAnaVO = lList.get(i);
 				if(tempList!=null){
