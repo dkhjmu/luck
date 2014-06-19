@@ -17,21 +17,33 @@ public class SeqCntSumAnaMain {
 	public static void main(String[] args) {
 		ArrayList<SeqStatVO> list = getSeqStatList();
 		int size=list.size();
-		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
+		HashMap<String, IntVO> map=new HashMap<String, IntVO>(); //gap
+		HashMap<String, IntVO> map45=new HashMap<String, IntVO>(); //45c
 		for(int i=0;i<size;i++){
 			SeqStatVO vo=list.get(i);
 			ArrayList<IntVO> gl = vo.getGaps();
-			Collections.sort(gl);
-			String gPtn = "";
-			for(int j=0;j<2;j++){
-				IntVO v=gl.get(j);
-				gPtn=gPtn+v.toString()+"\t";
-			}
-//			System.out.println(vo.getGapFullPtn());
-			PatternMaker.addMap(gPtn, map);
+			ArrayList<IntVO> l2 = vo.getCnt45();
+			getPtnMap(map, gl);
+			getPtnMap(map45, l2);
+			
+			//System.out.println(vo.getGapFullPtn());
 		}
 //		gap.printResult();
-//		PatternMaker.printKeyNVal(map);
+		//PatternMaker.printKeyNVal(map);
+		System.out.println("!!");
+		PatternMaker.printKeyNVal(map45);
+	}
+
+	private static void getPtnMap(HashMap<String, IntVO> map,
+			ArrayList<IntVO> gl) {
+		Collections.sort(gl);
+		
+		String gPtn = "";
+		for(int j=0;j<2;j++){
+			IntVO v=gl.get(j);
+			gPtn=gPtn+v.toString()+"\t";
+		}
+		PatternMaker.addMap(gPtn, map);
 	}
 
 	public static int getMaxSeq(ArrayList<SeqStatVO> list) {
@@ -66,6 +78,7 @@ public class SeqCntSumAnaMain {
 				vo.setHindexStatus(lineAnaVO);
 				
 				if( lineAnaVO.getNext()!=0){
+					vo.addCnts(lineAnaVO);
 					//bnu
 					vo.setBnuStat(lineAnaVO.getBnu());
 					//gap
@@ -84,7 +97,7 @@ public class SeqCntSumAnaMain {
 				
 			}// for in
 			seqList.add(vo);
-			System.out.println(vo);
+			//System.out.println(vo);
 		}	
 		
 		return seqList;
