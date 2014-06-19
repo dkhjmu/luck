@@ -16,6 +16,7 @@ public class SeqStatVO {
 	String gapFullPtn="";
 	ArrayList<IntVO> gaps;
 	ArrayList<IntVO> cnt45;
+	ArrayList<LineAnaVO> good;
 	int spg0=0;//짧은 패턴 0번째 대략 0
 	int spg1=0;//짧은 패턴 1번째 대략 1
 	int spg2=0;//짧은 패턴 2번째 대략 2~7
@@ -48,6 +49,7 @@ public class SeqStatVO {
 		this.seq=seq;
 		gaps=new ArrayList<IntVO>();
 		cnt45=new ArrayList<IntVO>();
+		good=new ArrayList<LineAnaVO>();
 	}
 	
 	public int getSeq() {
@@ -259,9 +261,20 @@ public class SeqStatVO {
 		
 		cnt45.add(new IntVO(lineAnaVO.getC45()));
 		
+		good.add(lineAnaVO);
+		
 	}
 	
 	
+	
+	public ArrayList<LineAnaVO> getGood() {
+		return good;
+	}
+
+	public void setGood(ArrayList<LineAnaVO> good) {
+		this.good = good;
+	}
+
 	public ArrayList<IntVO> getGaps() {
 		return gaps;
 	}

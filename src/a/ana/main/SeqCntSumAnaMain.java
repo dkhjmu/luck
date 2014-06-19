@@ -19,6 +19,7 @@ public class SeqCntSumAnaMain {
 		int size=list.size();
 		HashMap<String, IntVO> map=new HashMap<String, IntVO>(); //gap
 		HashMap<String, IntVO> map45=new HashMap<String, IntVO>(); //45c
+		HashMap<String, IntVO> mapGood=new HashMap<String, IntVO>(); //45c
 		for(int i=0;i<size;i++){
 			SeqStatVO vo=list.get(i);
 			ArrayList<IntVO> gl = vo.getGaps();
@@ -26,12 +27,20 @@ public class SeqCntSumAnaMain {
 			getPtnMap(map, gl);
 			getPtnMap(map45, l2);
 			
+			ArrayList<LineAnaVO> l3=vo.getGood();
+			
+			for(LineAnaVO v:l3){
+				PatternMaker.addMap(v.getGap()+"  "+v.getC45(), mapGood);
+			}
+			
+			
+			
 			//System.out.println(vo.getGapFullPtn());
 		}
 //		gap.printResult();
 		//PatternMaker.printKeyNVal(map);
-		System.out.println("!!");
-		PatternMaker.printKeyNVal(map45);
+//		PatternMaker.printKeyNVal(map45);
+		PatternMaker.printKeyNVal(mapGood);
 	}
 
 	private static void getPtnMap(HashMap<String, IntVO> map,
