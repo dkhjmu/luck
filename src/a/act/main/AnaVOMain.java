@@ -48,6 +48,7 @@ public class AnaVOMain {
 				"총량",
 				"h-index",
 				"gap",
+				"45",
 				"gap2",
 				"gap3",
 				"max",

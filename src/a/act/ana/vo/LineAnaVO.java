@@ -200,6 +200,7 @@ public class LineAnaVO implements Comparable<LineAnaVO> {
 					+totalUPType+"\t"
 					+h_index+"\t"
 					+gap+"\t"
+					+c45+"\t"
 					+gap2+"\t"
 					+gap3+"\t"
 					+max+"\t"
