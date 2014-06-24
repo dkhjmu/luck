@@ -2,11 +2,11 @@ package a.ana.main;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import a.act.ana.vo.LineAnaVO;
 import a.act.ana.vo.SeqStatVO;
-import a.act.calc.vo.CalcVO;
 import a.act.main.AnaVOMain;
 import a.act.main.vo.IntVO;
 import a.act.main.vo.ResultVO;
@@ -24,7 +24,9 @@ public class SeqCntSumAnaMain {
 			SeqStatVO vo=list.get(i);
 			ArrayList<IntVO> gl = vo.getGaps();
 			ArrayList<IntVO> l2 = vo.getCnt45();
+			Collections.sort(gl);
 			getPtnMap(map, gl);
+			sortDesc(l2);
 			getPtnMap(map45, l2);
 			
 			ArrayList<LineAnaVO> l3=vo.getGood();
@@ -38,15 +40,25 @@ public class SeqCntSumAnaMain {
 			//System.out.println(vo.getGapFullPtn());
 		}
 //		gap.printResult();
-		//PatternMaker.printKeyNVal(map);
-//		PatternMaker.printKeyNVal(map45);
-		PatternMaker.printKeyNVal(mapGood);
+//		PatternMaker.printKeyNVal(map);
+		PatternMaker.printKeyNVal(map45);
+//		PatternMaker.printKeyNVal(mapGood);
+	}
+	
+	public static void sortDesc(ArrayList<IntVO> list){
+		Comparator<IntVO> c=new Comparator<IntVO>() {
+
+			public int compare(IntVO o1, IntVO o2) {
+				return o2.val()-o1.val();
+			}
+			
+		};
+
+		Collections.sort(list, c);
 	}
 
 	private static void getPtnMap(HashMap<String, IntVO> map,
 			ArrayList<IntVO> gl) {
-		Collections.sort(gl);
-		
 		String gPtn = "";
 		for(int j=0;j<2;j++){
 			IntVO v=gl.get(j);
