@@ -32,7 +32,7 @@ public class SeqCntSumAnaMain {
 			ArrayList<LineAnaVO> l3=vo.getGood();
 			
 			for(LineAnaVO v:l3){
-				PatternMaker.addMap(v.getHindex()+"  "+v.getGap()+"  "+v.getC45(), mapGood);
+				PatternMaker.addMap(v.getHindex()+"_"+v.getGap()+"_"+v.getC45(), mapGood);
 			}
 			
 			
@@ -41,8 +41,8 @@ public class SeqCntSumAnaMain {
 		}
 //		gap.printResult();
 //		PatternMaker.printKeyNVal(map);
-		PatternMaker.printKeyNVal(map45);
-//		PatternMaker.printKeyNVal(mapGood);
+//		PatternMaker.printKeyNVal(map45);
+		PatternMaker.printKeyNVal(mapGood);
 	}
 	
 	public static void sortDesc(ArrayList<IntVO> list){
@@ -60,7 +60,7 @@ public class SeqCntSumAnaMain {
 	private static void getPtnMap(HashMap<String, IntVO> map,
 			ArrayList<IntVO> gl) {
 		String gPtn = "";
-		for(int j=0;j<2;j++){
+		for(int j=0;j<3;j++){
 			IntVO v=gl.get(j);
 			gPtn=gPtn+v.toString()+"\t";
 		}
