@@ -32,7 +32,7 @@ public class SeqCntSumAnaMain {
 			ArrayList<LineAnaVO> l3=vo.getGood();
 			
 			for(LineAnaVO v:l3){
-				PatternMaker.addMap(v.getHindex()+"_"+v.getGap()+"_"+v.getC45(), mapGood);
+				PatternMaker.addMap(v.getHindex()+"_"+v.getGap(), mapGood);
 			}
 			
 			
