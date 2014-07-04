@@ -28,4 +28,17 @@ public class ResultDAO {
 		return list;
 	}
 	
+	public ArrayList<ResultVO> getResultList(int seq) {
+		if(list.size()<seq){
+			return null;
+		}
+		
+		ArrayList<ResultVO> result=new ArrayList<ResultVO>();
+		for(int i=0;i<seq-1;i++){
+			result.add(list.get(i));
+		}
+		
+		return result;
+	}
+	
 }

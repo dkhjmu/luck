@@ -226,8 +226,12 @@ public class AnaVOMain {
 		
 		return newOne;
 	}
-
+	
 	public static ArrayList<ResultVO> getResultList() {
+		return getResultList(0);
+	}
+
+	public static ArrayList<ResultVO> getResultList(int seq) {
 		ResultDAO dao=new ResultDAO();
 		
 		dao.add(1,37,23,10,33,29,40,16);
@@ -783,11 +787,25 @@ public class AnaVOMain {
 //		ArrayList<CalcVO> gap2Result = gap2.calc(list, 311, 400);
 //		System.out.println(gap2Result.size());
 ////		printList(gap2Result);
-		ArrayList<ResultVO> list = dao.getResultList();
-		return list;
+		
+		if(seq == 0){
+			ArrayList<ResultVO> list = dao.getResultList();
+			return list;
+		}else{
+			ArrayList<ResultVO> list = dao.getResultList(seq);
+			return list;
+		}
 	}
 	
 	public static ArrayList<ResultVO> getResultListNoBonus() {
+		ArrayList<ResultVO> list = AnaVOMain.getResultList();
+		for(int i=0;i<list.size();i++){
+			list.get(i).setNoBonus();
+		}
+		return list;
+	}
+	
+	public static ArrayList<ResultVO> getResultListNoBonus(int seq) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultList();
 		for(int i=0;i<list.size();i++){
 			list.get(i).setNoBonus();
