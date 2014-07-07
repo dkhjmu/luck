@@ -2,6 +2,7 @@ package a.pick.rand;
 
 import java.util.ArrayList;
 
+import a.act.ana.vo.LineAnaVO;
 import a.act.main.AnaVOMain;
 import a.act.main.vo.ResultVO;
 import a.pick.AbstractPicker;
@@ -29,8 +30,11 @@ public class RandomPicker extends AbstractPicker {
 	@Override
 	public int[][] pick(int seq) {
 		
-		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus();
-		AnaVOMain.getAnaVOList(list, seq);
+		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);
+		ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
+		
+		
+		
 		
 		
 		
