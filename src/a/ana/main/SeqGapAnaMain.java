@@ -55,21 +55,21 @@ public class SeqGapAnaMain {
 
 	public static void secFlow() {
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus();
-//		AnaVOMain.printCols();
+		AnaVOMain.printCols();
 		ArrayList<LineAnaVO> tempList=null;
 		//세야할 대상
 		int k=302;
-			CalcVO gap2=new CalcVO(k, 0);
-			ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
-			for(int i=0;i<lList.size();i++){
-				LineAnaVO lineAnaVO = lList.get(i);
-				if(tempList!=null){
-					lineAnaVO.calc(tempList.get(i));
-				}
-				gap2.add(lineAnaVO.getGap().val()+"", 1);
-			}// for in
-			
-			gap2.printResult();
+		CalcVO gap2=new CalcVO(k, 0);
+		ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
+		for(int i=0;i<lList.size();i++){
+			LineAnaVO lineAnaVO = lList.get(i);
+			if(tempList!=null){
+				lineAnaVO.calc(tempList.get(i));
+			}
+			gap2.add(lineAnaVO.getGap().val()+"", 1);
+		}// for in
+		
+		gap2.printResult();
 	}
 	
 

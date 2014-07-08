@@ -1,13 +1,15 @@
 package a.pick.rand;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import a.act.ana.vo.LineAnaVO;
 import a.act.main.AnaVOMain;
+import a.act.main.vo.IntVO;
 import a.act.main.vo.ResultVO;
-import a.pick.AbstractPicker;
+import a.ana.pattern.PatternMaker;
 
-public class RandomPicker extends AbstractPicker {
+public class RandomPicker{
 
 	
 	int tryN=100;
@@ -17,35 +19,28 @@ public class RandomPicker extends AbstractPicker {
 		return rand;
 	}
 
-	@Override
-	public int getSize() {
-		return super.getSize();
-	}
-
 	
 	public void setTryN(int n){
 		this.tryN=n;
 	}
 	
-	@Override
-	public int[][] pick(int seq) {
+	public void pick(int seq) {
 		
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);
 		ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
 		
+		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
+ 		
+		for(LineAnaVO vo : result){
+			PatternMaker.addMap(vo.getGap().toString(), map);
+		}
 		
-		
-		
-		
-		
-		
-		
-		return null;
+		PatternMaker.printKeyNVal(map);
 	}
-
-	@Override
-	public int[][] getList() {
-		return super.getList();
+	
+	public static void main(String[] args) {
+		RandomPicker p=new RandomPicker();
+		p.pick(300);
 	}
 
 	

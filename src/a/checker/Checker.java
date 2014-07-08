@@ -1,7 +1,6 @@
 package a.checker;
 
-import a.pick.AbstractPicker;
-import a.util.ArrayUtil;
+//import a.pick.AbstractPicker;
 
 public class Checker {
 	public static int checkResult(int result[], int right[], int bonus){
@@ -24,12 +23,12 @@ public class Checker {
 		
 		return vv;
 	}
-	
-	public static int[] check(AbstractPicker picker, int seq, int rightA[], int bonus){
-		
-		return null;
-		
-	}
+//	
+//	public static int[] check(AbstractPicker picker, int seq, int rightA[], int bonus){
+//		
+//		return null;
+//		
+//	}
 	
 	public static void printArray(int[] resultA){
 		for(int i=0;i<resultA.length;i++){

@@ -42,7 +42,7 @@ public class SeqCntSumAnaMain {
 //		gap.printResult();
 //		PatternMaker.printKeyNVal(map);
 //		PatternMaker.printKeyNVal(map45);
-		PatternMaker.printKeyNVal(mapGood);
+//		PatternMaker.printKeyNVal(mapGood);
 	}
 	
 	public static void sortDesc(ArrayList<IntVO> list){
@@ -80,13 +80,23 @@ public class SeqCntSumAnaMain {
 	public static ArrayList<SeqStatVO> getSeqStatList() {
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus();
 
+		return getSeqStatList(list);
+	}
+	
+	public static ArrayList<SeqStatVO> getSeqStatList(int seq) {
+		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);
+
+		return getSeqStatList(list);
+	}
+
+	private static ArrayList<SeqStatVO> getSeqStatList(ArrayList<ResultVO> list) {
 		ArrayList<LineAnaVO> tempList=null;
 		ArrayList<SeqStatVO> seqList=new ArrayList<SeqStatVO>();
 
 		SeqStatVO.printHeader();
 		
 		//세야할 대상
-		for(int k=301;k<501;k++){
+		for(int k=list.size()-200;k<list.size();k++){
 			ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
 			SeqStatVO vo=new SeqStatVO(k+1);
 			for(int i=0;i<lList.size();i++){
@@ -118,11 +128,13 @@ public class SeqCntSumAnaMain {
 				
 			}// for in
 			seqList.add(vo);
-			//System.out.println(vo);
+			System.out.println(vo);
 		}	
 		
 		return seqList;
 	}
+	
+	
 	
 
 }

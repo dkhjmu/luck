@@ -55,7 +55,7 @@ public class GapAnaMain {
 
 	public static void secFlow() {
 		ArrayList<ResultVO> list = AnaVOMain.getResultList();
-//		AnaVOMain.printCols();
+		AnaVOMain.printCols();
 		ArrayList<LineAnaVO> tempList=null;
 		//세야할 대상
 		int bnu = 0;

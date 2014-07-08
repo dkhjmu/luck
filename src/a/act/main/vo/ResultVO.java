@@ -1,6 +1,5 @@
 package a.act.main.vo;
 
-import java.util.Collections;
 
 public class ResultVO {
 	int seq;
