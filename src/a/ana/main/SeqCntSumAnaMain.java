@@ -93,7 +93,7 @@ public class SeqCntSumAnaMain {
 		ArrayList<LineAnaVO> tempList=null;
 		ArrayList<SeqStatVO> seqList=new ArrayList<SeqStatVO>();
 
-		SeqStatVO.printHeader();
+//		SeqStatVO.printHeader();
 		
 		//세야할 대상
 		for(int k=list.size()-200;k<list.size();k++){
@@ -128,7 +128,7 @@ public class SeqCntSumAnaMain {
 				
 			}// for in
 			seqList.add(vo);
-			System.out.println(vo);
+//			System.out.println(vo);
 		}	
 		
 		return seqList;

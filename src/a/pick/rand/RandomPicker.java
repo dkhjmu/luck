@@ -8,23 +8,19 @@ import a.act.main.AnaVOMain;
 import a.act.main.vo.IntVO;
 import a.act.main.vo.ResultVO;
 import a.ana.pattern.PatternMaker;
+import a.pick.AbstractPicker;
+import a.pick.vo.PickVO;
 
-public class RandomPicker{
+public class RandomPicker extends AbstractPicker{
 
-	
-	int tryN=100;
 	
 	public static int getRand(int max) {
 		int rand = (int) (Math.floor(Math.random() * 100) % max);
 		return rand;
 	}
 
-	
-	public void setTryN(int n){
-		this.tryN=n;
-	}
-	
-	public void pick(int seq) {
+	@Override
+	public ArrayList<PickVO> pick(int seq) {
 		
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);
 		ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
@@ -36,6 +32,8 @@ public class RandomPicker{
 		}
 		
 		PatternMaker.printKeyNVal(map);
+		
+		return null;
 	}
 	
 	public static void main(String[] args) {

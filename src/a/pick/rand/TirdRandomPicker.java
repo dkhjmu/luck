@@ -8,7 +8,7 @@ import a.act.main.vo.ResultVO;
 import a.pick.AbstractPicker;
 import a.pick.vo.PickVO;
 
-public class NormalRandomPicker extends AbstractPicker{
+public class TirdRandomPicker extends AbstractPicker{
 
 	
 	public static int getRand(int max) {
@@ -20,15 +20,37 @@ public class NormalRandomPicker extends AbstractPicker{
 	public ArrayList<PickVO> pick(int seq) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);
 		
+		tryN=30;
 		
 		ArrayList<PickVO> glist=new ArrayList<PickVO>();
 		for(int i=0;i<tryN;i++){
 			ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
+			ArrayList<LineAnaVO> temp = new ArrayList<LineAnaVO>();
 			PickVO pvo=new PickVO(seq, i+1);
+			int size = result.size();
+			for(int v=0;v<size;v++ ){
+				if(result.get(v).getGap().val()>25){
+					result.remove(v);
+				}
+				size = result.size();
+			}
+			
 			for(int j=0;j<6;j++){
-				int r=getRand(result.size()-1);
-				pvo.add(result.get(r).getBnu());
-				result.remove(r);
+				if(getRand(45)>6){
+					size = result.size();
+					for(int v=0;v<size;v++ ){
+						if(result.get(v).getGap().val()<=10){
+							temp.add(result.get(v));
+						}
+					}
+					int r=getRand(temp.size()-1);
+					pvo.add(temp.get(r).getBnu());
+					result.remove(temp.get(r));
+				}else{
+					int r=getRand(result.size()-1);
+					pvo.add(result.get(r).getBnu());
+					result.remove(r);
+				}
 			}
 			
 			if(checkDuplicate(glist, pvo)){
@@ -46,7 +68,7 @@ public class NormalRandomPicker extends AbstractPicker{
 	}
 	
 	public static void main(String[] args) {
-		NormalRandomPicker p=new NormalRandomPicker();
+		TirdRandomPicker p=new TirdRandomPicker();
 		p.pick(300);
 	}
 

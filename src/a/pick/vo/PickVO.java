@@ -2,8 +2,8 @@ package a.pick.vo;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-import a.act.ana.vo.LineAnaVO;
 import a.act.main.vo.IntVO;
 
 public class PickVO {
@@ -37,6 +37,7 @@ public class PickVO {
 	}
 
 	public int[] getArray(){
+		Collections.sort(list);
 		int[] result=new int[list.size()];
 		for(int i=0;i<list.size();i++){
 			result[i]=list.get(i).val();
@@ -44,5 +45,15 @@ public class PickVO {
 		return result;
 	}
 
+	public boolean equals(PickVO v){
+		int[] l=this.getArray();
+		int[] l2=v.getArray();
+		for(int i=0;i<6;i++){
+			if(l[i]!=l2[i]){
+				return false;
+			}
+		}
+		return true;
+	}
 	
 }

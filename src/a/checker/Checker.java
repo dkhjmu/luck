@@ -1,5 +1,13 @@
 package a.checker;
 
+import java.util.ArrayList;
+
+import a.act.main.AnaVOMain;
+import a.act.main.vo.ResultVO;
+import a.pick.AbstractPicker;
+import a.pick.rand.TirdRandomPicker;
+import a.pick.vo.PickVO;
+
 //import a.pick.AbstractPicker;
 
 public class Checker {
@@ -23,13 +31,84 @@ public class Checker {
 		
 		return vv;
 	}
-//	
-//	public static int[] check(AbstractPicker picker, int seq, int rightA[], int bonus){
-//		
-//		return null;
-//		
-//	}
 	
+	public static int[][] check(AbstractPicker picker, int seq, int rightA[], int bonus){
+		
+		ArrayList<PickVO> glist = picker.pick(seq);
+		int input=0;
+		int resultV[][] = {{0},{0,0,0,0,0,0,0,0}};
+		for (int i = 0; i < glist.size(); i++) {
+			int[] resultA = glist.get(i).getArray();
+//			ArrayUtil.print(resultA);
+//			ArrayUtil.print(rightA);
+			int pv=Checker.checkResult(resultA, rightA, bonus);
+			resultV[1][pv]++;
+//			if (pv >= 5) {
+//				System.out.println("right:");
+//				printArray(rightA);
+//				System.out.println("input:");
+//				printArray(resultA);
+//			}
+			input+=1000;
+		}
+		
+		moneySum(resultV[1], input, getSum(resultV[1]));
+		
+		resultV[0][0]=input;
+		
+		return resultV;
+		
+	}
+	
+	public static int SERV_SEQ = 100;
+	
+	public static void simulating(AbstractPicker picker) {
+		ArrayList<ResultVO> list = AnaVOMain.getResultList();
+		int maxSeq=list.size();
+		int startSeq = maxSeq - SERV_SEQ ;
+		int[] total={0,0,0,0,0,0,0,0};
+		int input=0;
+		int gets=0;
+		for(int i=startSeq;i<maxSeq;i++){
+			System.out.println("seq:"+(i+1)+" !! ");
+			int[][] rrr=Checker.check(picker, i+1, list.get(i).getArray(false), list.get(i).get(7));
+			
+			total=addResult(total, rrr[1]);
+			input+=rrr[0][0];
+			gets+=getSum(rrr[1]);
+		}
+		System.out.println("##################");
+		moneySum(total, input, gets);
+		System.out.println("inputs : \t"+input);
+		System.out.println("gets :   \t"+gets);
+	}
+	
+	public static void moneySum(int[] result, int input, int gets){
+		for(int i=0;i<result.length;i++){
+			System.out.print(result[i]+"\t");
+		}
+		int sum=getSum(result);
+		String ss ="";
+		if(input>gets){
+			ss ="DN";
+		}else{
+			ss ="UP";
+		}
+		System.out.println("SUM:"+sum+"\t"+ss);
+		System.out.println("SUM:"+sum+"\t"+ss);
+		try{
+			Thread.sleep(33);
+		}catch(Exception e){
+		}
+	}
+	
+	private static int[] addResult(int[] total, int[] rrr) {
+		for(int i=0;i<rrr.length;i++){
+			total[i]+=rrr[i];
+		}
+		return total;
+	}
+
 	public static void printArray(int[] resultA){
 		for(int i=0;i<resultA.length;i++){
 			System.out.print(resultA[i]+"\t");
@@ -40,5 +119,17 @@ public class Checker {
 	public static int getSum(int[] result) {
 		return result[3]*5000+result[4]*50000+result[5]*1200000+result[6]*100000000+result[7]*50000000;
 	}
+	
+	
+	public static void main(String[] args) {
+//		NormalRandomPicker picker=new NormalRandomPicker();
+//		Checker.simulating(picker);
+//		NormalRandomFilteredPicker picker=new NormalRandomFilteredPicker();
+//		Checker.simulating(picker);
+		TirdRandomPicker picker=new TirdRandomPicker();
+		Checker.simulating(picker);
+		
+	}
+
 	
 }
