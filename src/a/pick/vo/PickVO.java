@@ -7,6 +7,7 @@ import java.util.Collections;
 import a.act.main.vo.IntVO;
 
 public class PickVO {
+	int limit=6;
 	int seq;
 	int game;
 	ArrayList<IntVO> list;
@@ -26,7 +27,7 @@ public class PickVO {
 	}
 	
 	public boolean add(int v) {
-		if(isIn(v)){
+		if(isIn(v) && list.size()>=limit){
 			return false;
 		}
 		return list.add(new IntVO(v));

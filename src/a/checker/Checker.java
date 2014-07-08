@@ -60,7 +60,7 @@ public class Checker {
 		
 	}
 	
-	public static int SERV_SEQ = 100;
+	public static int SERV_SEQ = 10;
 	
 	public static void simulating(AbstractPicker picker) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultList();
@@ -123,10 +123,10 @@ public class Checker {
 	
 	public static void main(String[] args) {
 //		NormalRandomPicker picker=new NormalRandomPicker();
-//		Checker.simulating(picker);
-//		NormalRandomFilteredPicker picker=new NormalRandomFilteredPicker();
-//		Checker.simulating(picker);
 		TirdRandomPicker picker=new TirdRandomPicker();
+//		NormalRandomFilteredPicker picker=new NormalRandomFilteredPicker();
+
+		picker.setTryN(30);
 		Checker.simulating(picker);
 		
 	}

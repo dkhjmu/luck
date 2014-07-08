@@ -20,8 +20,6 @@ public class TirdRandomPicker extends AbstractPicker{
 	public ArrayList<PickVO> pick(int seq) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);
 		
-		tryN=30;
-		
 		ArrayList<PickVO> glist=new ArrayList<PickVO>();
 		for(int i=0;i<tryN;i++){
 			ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
@@ -29,17 +27,17 @@ public class TirdRandomPicker extends AbstractPicker{
 			PickVO pvo=new PickVO(seq, i+1);
 			int size = result.size();
 			for(int v=0;v<size;v++ ){
-				if(result.get(v).getGap().val()>25){
+				if(result.get(v).getGap().val()>15){
 					result.remove(v);
 				}
 				size = result.size();
 			}
 			
 			for(int j=0;j<6;j++){
-				if(getRand(45)>6){
+				if(getRand(45)<6){
 					size = result.size();
 					for(int v=0;v<size;v++ ){
-						if(result.get(v).getGap().val()<=10){
+						if(result.get(v).getGap().val()<=6){
 							temp.add(result.get(v));
 						}
 					}
@@ -60,6 +58,7 @@ public class TirdRandomPicker extends AbstractPicker{
 				glist.add(pvo);
 				System.out.print("..");
 			}
+			
 		}
 		System.out.println("END!");
 		

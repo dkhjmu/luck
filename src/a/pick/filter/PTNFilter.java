@@ -31,6 +31,8 @@ public class PTNFilter {
 					v = list.get(j).getGap2();
 				}else if("CNT45".equals(filterCode)){
 					v = list.get(j).getC45();
+				}else if("BNU".equals(filterCode)){
+					v = new IntVO(list.get(j).getBnu());
 				}else{
 					v = list.get(j).getGap();
 				}
@@ -43,6 +45,8 @@ public class PTNFilter {
 				Collections.sort(vlist);
 			}else if("CNT45".equals(filterCode)){
 				sortDesc(vlist);
+			}else if("BNU".equals(filterCode)){
+				Collections.sort(vlist);
 			}else{
 				Collections.sort(vlist);
 			}
@@ -55,14 +59,15 @@ public class PTNFilter {
 	}
 	
 	public static boolean filtered(ArrayList<LineAnaVO> list, int seq){
-		return checkPTNFilter(list, seq, "GAP") && checkPTNFilter(list, seq, "CNT45") ; 
+		return checkPTNFilter(list, seq, "BNU"); 
 	}
 
 	private static boolean checkPTNFilter(ArrayList<LineAnaVO> list, int seq, String filterCode) {
-		HashMap<String, IntVO> gmap = getFilter(filterCode, seq);
+		HashMap<String, IntVO> gmap;
 //		System.out.println("###################################");
 //		PatternMaker.printKeyNVal(gmap);
 //		System.out.println("###################################");
+		gmap = getFilter(filterCode, seq);
 		
 		ArrayList<IntVO> glist=getVlist(list, filterCode);
 		HashMap<String, IntVO> newGmap = new HashMap<String, IntVO>();
@@ -90,6 +95,8 @@ public class PTNFilter {
 				v = list.get(j).getGap2();
 			}else if("CNT45".equals(filterCode)){
 				v = list.get(j).getC45();
+			}else if("BNU".equals(filterCode)){
+				v = new IntVO(list.get(j).getBnu());
 			}else{
 				v = list.get(j).getGap();
 			}
@@ -99,6 +106,8 @@ public class PTNFilter {
 		if("GAP".equals(filterCode)){
 			Collections.sort(vlist);
 		}else if("GAP2".equals(filterCode)){
+			Collections.sort(vlist);
+		}else if("BNU".equals(filterCode)){
 			Collections.sort(vlist);
 		}else if("CNT45".equals(filterCode)){
 			sortDesc(vlist);
