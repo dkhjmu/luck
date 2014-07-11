@@ -1,5 +1,7 @@
 package a.act.main.vo;
 
+import a.util.ArrayUtil;
+
 
 public class ResultVO {
 	int seq;
@@ -79,6 +81,8 @@ public class ResultVO {
 			result[4]=bnu5;
 			result[5]=bnu6;
 			result[6]=bnu7;
+			
+			result=ArrayUtil.sort(result);
 			
 			return result;
 		}else{

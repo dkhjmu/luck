@@ -54,7 +54,7 @@ public class PatternMaker {
 //		
 //		printKeyNVal(map);
 		
-		System.out.println(getAllpattern(9,6));
+		System.out.println(getAllpattern(20,4));
 		
 		System.out.println("end");
 	}

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import a.act.main.AnaVOMain;
 import a.act.main.vo.ResultVO;
 import a.pick.AbstractPicker;
-import a.pick.rand.TirdRandomPicker;
+import a.pick.rand.RatingRandomPicker;
 import a.pick.vo.PickVO;
 
 //import a.pick.AbstractPicker;
@@ -14,10 +14,8 @@ public class Checker {
 	public static int checkResult(int result[], int right[], int bonus){
 		int vv=0;
 		for(int i=0;i<right.length;i++){
-			for(int j=0;j<result.length;j++){
-				if(right[i]==result[j]){
-					vv++;
-				}
+			if(right[i]==result[i]){
+				vv++;
 			}
 		}
 		
@@ -34,7 +32,7 @@ public class Checker {
 	
 	public static int[][] check(AbstractPicker picker, int seq, int rightA[], int bonus){
 		
-		ArrayList<PickVO> glist = picker.pick(seq);
+		ArrayList<PickVO> glist = picker.pick(seq-1);
 		int input=0;
 		int resultV[][] = {{0},{0,0,0,0,0,0,0,0}};
 		for (int i = 0; i < glist.size(); i++) {
@@ -43,12 +41,12 @@ public class Checker {
 //			ArrayUtil.print(rightA);
 			int pv=Checker.checkResult(resultA, rightA, bonus);
 			resultV[1][pv]++;
-//			if (pv >= 5) {
-//				System.out.println("right:");
-//				printArray(rightA);
-//				System.out.println("input:");
-//				printArray(resultA);
-//			}
+			if (pv >= 5) {
+				System.out.print("right:");
+				printArray(rightA);
+				System.out.print("input:");
+				printArray(resultA);
+			}
 			input+=1000;
 		}
 		
@@ -60,7 +58,6 @@ public class Checker {
 		
 	}
 	
-	public static int SERV_SEQ = 10;
 	
 	public static void simulating(AbstractPicker picker) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultList();
@@ -120,13 +117,15 @@ public class Checker {
 		return result[3]*5000+result[4]*50000+result[5]*1200000+result[6]*100000000+result[7]*50000000;
 	}
 	
+	public static int SERV_SEQ = 10;
 	
 	public static void main(String[] args) {
 //		NormalRandomPicker picker=new NormalRandomPicker();
-		TirdRandomPicker picker=new TirdRandomPicker();
 //		NormalRandomFilteredPicker picker=new NormalRandomFilteredPicker();
-
-		picker.setTryN(30);
+//		TirdRandomPicker picker=new TirdRandomPicker();
+		RatingRandomPicker picker=new RatingRandomPicker();
+		
+		picker.setTryN(100);
 		Checker.simulating(picker);
 		
 	}

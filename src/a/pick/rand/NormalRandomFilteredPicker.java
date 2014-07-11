@@ -23,6 +23,8 @@ public class NormalRandomFilteredPicker extends AbstractPicker{
 		
 		ArrayList<PickVO> glist=new ArrayList<PickVO>();
 		int trys=0;
+		
+		PTNFilter filter=new PTNFilter(seq);
 		for(int i=0;i<tryN;i++){
 			trys++;
 			ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
@@ -35,7 +37,7 @@ public class NormalRandomFilteredPicker extends AbstractPicker{
 				result.remove(r);
 			}
 			
-			if(PTNFilter.filtered(temp, seq)==true || trys>10000){
+			if(filter.filtered(temp, seq)==true || trys>10000){
 				if(checkDuplicate(glist, pvo)){
 					System.out.print("D");
 					i--;

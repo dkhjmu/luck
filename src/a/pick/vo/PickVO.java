@@ -7,7 +7,6 @@ import java.util.Collections;
 import a.act.main.vo.IntVO;
 
 public class PickVO {
-	int limit=6;
 	int seq;
 	int game;
 	ArrayList<IntVO> list;
@@ -23,11 +22,16 @@ public class PickVO {
 	}
 	
 	public boolean isIn(int v) {
-		return list.contains(new IntVO(v));
+		for(IntVO vo:list){
+			if(vo.val()==v){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean add(int v) {
-		if(isIn(v) && list.size()>=limit){
+		if(isIn(v) || list.size()>=6){
 			return false;
 		}
 		return list.add(new IntVO(v));
@@ -56,5 +60,20 @@ public class PickVO {
 		}
 		return true;
 	}
+
+	public static void printHeader(){
+		System.out.println("SEQ\tGame\tn1\tn2\tn3\tn4\tn5\tn6");
+	}
+	
+	@Override
+	public String toString() {
+		String str=seq + "\t" + game ;
+		int[] a=getArray();
+		for(int i=0;i<a.length;i++){
+			str=str+"\t"+a[i];
+		}
+		return  str;
+	}
+	
 	
 }

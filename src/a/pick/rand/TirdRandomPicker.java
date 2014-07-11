@@ -8,68 +8,83 @@ import a.act.main.vo.ResultVO;
 import a.pick.AbstractPicker;
 import a.pick.vo.PickVO;
 
-public class TirdRandomPicker extends AbstractPicker{
+public class TirdRandomPicker extends AbstractPicker {
 
-	
 	public static int getRand(int max) {
 		int rand = (int) (Math.floor(Math.random() * 100) % max);
 		return rand;
 	}
-	
+
 	@Override
 	public ArrayList<PickVO> pick(int seq) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);
-		
-		ArrayList<PickVO> glist=new ArrayList<PickVO>();
-		for(int i=0;i<tryN;i++){
+
+		ArrayList<PickVO> glist = new ArrayList<PickVO>();
+		for (int i = 0; i < tryN; i++) {
 			ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
 			ArrayList<LineAnaVO> temp = new ArrayList<LineAnaVO>();
-			PickVO pvo=new PickVO(seq, i+1);
 			int size = result.size();
-			for(int v=0;v<size;v++ ){
-				if(result.get(v).getGap().val()>15){
-					result.remove(v);
+			ArrayList<LineAnaVO> removeList = new ArrayList<LineAnaVO>();
+			for (int v = 0; v < size; v++) {
+				if (result.get(v).getGap().val() > 8) {
+					removeList.add(result.get(v));
 				}
-				size = result.size();
-			}
+			}//for
 			
-			for(int j=0;j<6;j++){
-				if(getRand(45)<6){
+			for(LineAnaVO v : removeList){
+				result.remove(v);
+			}
+
+			PickVO pvo = new PickVO(seq, i + 1);
+			int g0cnt = 0;
+
+			while (pvo.getArray().length < 6) {
+				if (getRand(45) < 6) {
 					size = result.size();
-					for(int v=0;v<size;v++ ){
-						if(result.get(v).getGap().val()<=6){
+					for (int v = 0; v < size; v++) {
+						if (result.get(v).getGap().val() <= 5) {
 							temp.add(result.get(v));
 						}
 					}
-					int r=getRand(temp.size()-1);
+					int r = getRand(temp.size() - 1);
 					pvo.add(temp.get(r).getBnu());
 					result.remove(temp.get(r));
-				}else{
-					int r=getRand(result.size()-1);
+				} else if (getRand(15) < 6 && g0cnt < 2) {
+					size = result.size();
+					for (int v = 0; v < size; v++) {
+						if (result.get(v).getGap().val() == 0) {
+							temp.add(result.get(v));
+						}
+					}
+					g0cnt++;
+					int r = getRand(temp.size() - 1);
+					pvo.add(temp.get(r).getBnu());
+					result.remove(temp.get(r));
+				} else {
+					int r = getRand(result.size() - 1);
 					pvo.add(result.get(r).getBnu());
 					result.remove(r);
 				}
 			}
-			
-			if(checkDuplicate(glist, pvo)){
+
+			if (checkDuplicate(glist, pvo)) {
 				System.out.print("D");
 				i--;
-			}else{
+			} else {
 				glist.add(pvo);
 				System.out.print("..");
 			}
-			
-		}
+		}//for
 		System.out.println("END!");
-		
+
 		return glist;
-		
-	}
-	
-	public static void main(String[] args) {
-		TirdRandomPicker p=new TirdRandomPicker();
-		p.pick(300);
+
 	}
 
-	
+	public static void main(String[] args) {
+		TirdRandomPicker p = new TirdRandomPicker();
+		p.setTryN(10);
+		p.print(p.pick(300));
+	}
+
 }

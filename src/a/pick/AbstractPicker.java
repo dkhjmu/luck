@@ -22,5 +22,25 @@ public abstract class AbstractPicker {
 		}
 		return false;
 	}
+	
+	public void print(ArrayList<PickVO> list){
+		for(PickVO vo:list){
+			System.out.println(vo);
+		}
+	}
+	
+	public boolean normalCheck(PickVO v){
+		int[] g=v.getArray();
+		int sum=0;
+		for(int j:g){
+			sum+=j;
+		}
+		
+		if(sum<95 || sum > 180){
+			return false;
+		}
+		
+		return true;
+	}
 }
 

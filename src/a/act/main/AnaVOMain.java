@@ -18,22 +18,22 @@ public class AnaVOMain {
 		ArrayList<ResultVO> list = getResultListNoBonus();
 //		ArrayList<ResultVO> list = getResultList();
 		printCols();
-//		ArrayList<LineAnaVO> tempList=null;
-//		for(int k=400;k<501;k++){
-//			ArrayList<LineAnaVO> lList = getAnaVOList(list, k);
-//			for(int i=0;i<lList.size();i++){
-//				if(tempList!=null){
-//					lList.get(i).calc(tempList.get(i));
-//				}
-//				System.out.println(lList.get(i));
-//			}
-//			tempList=lList;
-//		}
-		
-		ArrayList<LineAnaVO> lList = getAnaVOList(list, 499);
-		for(int i=0;i<lList.size();i++){
-			System.out.println(lList.get(i));
+		ArrayList<LineAnaVO> tempList=null;
+		for(int k=400;k<501;k++){
+			ArrayList<LineAnaVO> lList = getAnaVOList(list, k);
+			for(int i=0;i<lList.size();i++){
+				if(tempList!=null){
+					lList.get(i).calc(tempList.get(i));
+				}
+				System.out.println(lList.get(i));
+			}
+			tempList=lList;
 		}
+		
+//		ArrayList<LineAnaVO> lList = getAnaVOList(list, 499);
+//		for(int i=0;i<lList.size();i++){
+//			System.out.println(lList.get(i));
+//		}
 		
 	}
 

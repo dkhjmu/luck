@@ -16,29 +16,33 @@ public class SeqCntSumAnaMain {
 	
 	public static void main(String[] args) {
 		ArrayList<SeqStatVO> list = getSeqStatList();
-		int size=list.size();
-		HashMap<String, IntVO> map=new HashMap<String, IntVO>(); //gap
-		HashMap<String, IntVO> map45=new HashMap<String, IntVO>(); //45c
-		HashMap<String, IntVO> mapGood=new HashMap<String, IntVO>(); //45c
-		for(int i=0;i<size;i++){
-			SeqStatVO vo=list.get(i);
-			ArrayList<IntVO> gl = vo.getGaps();
-			ArrayList<IntVO> l2 = vo.getCnt45();
-			Collections.sort(gl);
-			getPtnMap(map, gl);
-			sortDesc(l2);
-			getPtnMap(map45, l2);
-			
-			ArrayList<LineAnaVO> l3=vo.getGood();
-			
-			for(LineAnaVO v:l3){
-				PatternMaker.addMap(v.getHindex()+"_"+v.getGap(), mapGood);
-			}
-			
-			
-			
-			//System.out.println(vo.getGapFullPtn());
+		SeqStatVO.printHeader();
+		for(SeqStatVO vo : list){
+			System.out.println(vo);
 		}
+//		int size=list.size();
+//		HashMap<String, IntVO> map=new HashMap<String, IntVO>(); //gap
+//		HashMap<String, IntVO> map45=new HashMap<String, IntVO>(); //45c
+//		HashMap<String, IntVO> mapGood=new HashMap<String, IntVO>(); //45c
+//		for(int i=0;i<size;i++){
+//			SeqStatVO vo=list.get(i);
+//			ArrayList<IntVO> gl = vo.getGaps();
+//			ArrayList<IntVO> l2 = vo.getCnt45();
+//			Collections.sort(gl);
+//			getPtnMap(map, gl);
+//			sortDesc(l2);
+//			getPtnMap(map45, l2);
+//			
+//			ArrayList<LineAnaVO> l3=vo.getGood();
+//			
+//			for(LineAnaVO v:l3){
+//				PatternMaker.addMap(v.getHindex()+"_"+v.getGap(), mapGood);
+//			}
+//			
+//			
+//			
+//			//System.out.println(vo.getGapFullPtn());
+//		}
 //		gap.printResult();
 //		PatternMaker.printKeyNVal(map);
 //		PatternMaker.printKeyNVal(map45);
