@@ -9,6 +9,7 @@ import a.act.main.vo.IntVO;
 public class PickVO {
 	int seq;
 	int game;
+	int limit=6;
 	ArrayList<IntVO> list;
 	
 	public PickVO(int seq, int game) {
@@ -31,7 +32,7 @@ public class PickVO {
 	}
 	
 	public boolean add(int v) {
-		if(isIn(v) || list.size()>=6){
+		if(isIn(v) || list.size()>=limit){
 			return false;
 		}
 		return list.add(new IntVO(v));
@@ -53,7 +54,7 @@ public class PickVO {
 	public boolean equals(PickVO v){
 		int[] l=this.getArray();
 		int[] l2=v.getArray();
-		for(int i=0;i<6;i++){
+		for(int i=0;i<limit;i++){
 			if(l[i]!=l2[i]){
 				return false;
 			}
@@ -61,6 +62,10 @@ public class PickVO {
 		return true;
 	}
 
+	public void setLimit(int l){
+		this.limit=l;
+	}
+	
 	public static void printHeader(){
 		System.out.println("SEQ\tGame\tn1\tn2\tn3\tn4\tn5\tn6");
 	}
