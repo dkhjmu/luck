@@ -32,7 +32,7 @@ public class PickVO {
 	}
 	
 	public boolean add(int v) {
-		if(isIn(v) || list.size()>=limit){
+		if(list.size()>=limit || isIn(v)){
 			return false;
 		}
 		return list.add(new IntVO(v));

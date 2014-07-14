@@ -8,6 +8,11 @@ public abstract class AbstractPicker {
 	
 	protected int tryN=100;
 	
+	public static int getRand(int max) {
+		int rand = (int) (Math.floor(Math.random() * 100) % max);
+		return rand;
+	}
+	
 	public void setTryN(int n){
 		this.tryN=n;
 	}

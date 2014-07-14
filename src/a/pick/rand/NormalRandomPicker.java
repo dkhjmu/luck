@@ -11,11 +11,6 @@ import a.pick.vo.PickVO;
 public class NormalRandomPicker extends AbstractPicker{
 
 	
-	public static int getRand(int max) {
-		int rand = (int) (Math.floor(Math.random() * 100) % max);
-		return rand;
-	}
-	
 	@Override
 	public ArrayList<PickVO> pick(int seq) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);

@@ -26,7 +26,7 @@ public class TirdRandomPicker extends AbstractPicker {
 			int size = result.size();
 			ArrayList<LineAnaVO> removeList = new ArrayList<LineAnaVO>();
 			for (int v = 0; v < size; v++) {
-				if (result.get(v).getGap().val() > 8) {
+				if (result.get(v).getGap().val() > 10) {
 					removeList.add(result.get(v));
 				}
 			}//for

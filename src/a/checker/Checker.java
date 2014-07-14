@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import a.act.main.AnaVOMain;
 import a.act.main.vo.ResultVO;
 import a.pick.AbstractPicker;
-import a.pick.rand.NormalRandomPicker;
+import a.pick.anti.AntiPicker;
 import a.pick.vo.PickVO;
 
 //import a.pick.AbstractPicker;
@@ -13,9 +13,12 @@ import a.pick.vo.PickVO;
 public class Checker {
 	public static int checkResult(int result[], int right[], int bonus){
 		int vv=0;
-		for(int i=0;i<right.length;i++){
-			if(right[i]==result[i]){
-				vv++;
+		for(int j=0;j<result.length;j++){
+			for(int i=0;i<right.length;i++){
+				if(right[i]==result[j]){
+					vv++;
+					right[i]=-1;
+				}
 			}
 		}
 		
@@ -32,6 +35,9 @@ public class Checker {
 	
 	public static int[][] check(AbstractPicker picker, int seq, int rightA[], int bonus){
 		
+		
+		int[] rightClone=rightA.clone();
+		
 		ArrayList<PickVO> glist = picker.pick(seq-1);
 		int input=0;
 		int resultV[][] = {{0},{0,0,0,0,0,0,0,0}};
@@ -43,7 +49,9 @@ public class Checker {
 			resultV[1][pv]++;
 			if (pv >= 5) {
 				System.out.print("right:");
-				printArray(rightA);
+				printArray(rightClone);
+				System.out.println("bonus:"+bonus);
+				System.out.println("");
 				System.out.print("input:");
 				printArray(resultA);
 			}
@@ -117,15 +125,16 @@ public class Checker {
 		return result[3]*5000+result[4]*50000+result[5]*1200000+result[6]*100000000+result[7]*50000000;
 	}
 	
-	public static int SERV_SEQ = 10;
+	public static int SERV_SEQ = 100;
 	
 	public static void main(String[] args) {
-		NormalRandomPicker picker=new NormalRandomPicker();
+//		NormalRandomPicker picker=new NormalRandomPicker();
 //		NormalRandomFilteredPicker picker=new NormalRandomFilteredPicker();
-//		TirdRandomPicker picker=new TirdRandomPicker();
 //		RatingRandomPicker picker=new RatingRandomPicker();
+		AntiPicker picker = new AntiPicker();
+//		TirdRandomPicker picker=new TirdRandomPicker();
 		
-		picker.setTryN(100);
+//		picker.setTryN(1);
 		Checker.simulating(picker);
 		
 	}
