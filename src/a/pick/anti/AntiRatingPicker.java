@@ -24,20 +24,16 @@ public class AntiRatingPicker extends AbstractPicker{
 		PickVO pvo3=new PickVO(seq, 3);
 		pvo3.setLimit(45);
 		for(LineAnaVO vo:result){
-			if(vo.getHindex()==0){
-				pvo1.add(vo.getBnu());
+			if(vo.getHindex()==0 && vo.getGap().val()==0){
+				pvo2.add(vo.getBnu());
 			}else{
-				if(vo.getHindex()!=0 && vo.getGap().val()==0){
-					pvo2.add(vo.getBnu());
-				}else{
-					pvo3.add(vo.getBnu());
-				}
-			}//if
+				pvo3.add(vo.getBnu());
+			}
 		}
 		
 //		glist.add(pvo1);
-//		glist.add(pvo2);
-		glist.add(pvo3);
+		glist.add(pvo2);
+//		glist.add(pvo3);
 		
 		return glist;
 	}
