@@ -34,6 +34,12 @@ public abstract class AbstractPicker {
 		}
 	}
 	
+	public void printN(ArrayList<PickVO> list){
+		for(PickVO vo:list){
+			System.out.println(vo.getArray().length+"\t"+vo);
+		}
+	}
+	
 	public boolean normalCheck(PickVO v){
 		int[] g=v.getArray();
 		int sum=0;

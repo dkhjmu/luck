@@ -36,7 +36,7 @@ public class AntiRatingPicker extends AbstractPicker{
 //		}
 		
 		for(LineAnaVO vo:result){
-			if(vo.getC45().val()<3){
+			if(vo.getGap().val()<=1){
 				pvo3.add(vo.getBnu());
 			}
 		}
@@ -65,11 +65,9 @@ public class AntiRatingPicker extends AbstractPicker{
 			for(PickVO v: g){
 				int val=Checker.checkResult(v.getArray(), right, bonus);
 				System.out.println(val);
-				if(v.getArray().length==1){
-					total++;
-					if(val==0){
-						zero++;
-					}
+				total++;
+				if(val>=3){
+					zero++;
 				}
 			}
 		}

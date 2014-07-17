@@ -72,7 +72,7 @@ public class PickVO {
 	
 	@Override
 	public String toString() {
-		String str=seq + "\t" + game ;
+		String str=seq + "\t<" + game + ">";
 		int[] a=getArray();
 		for(int i=0;i<a.length;i++){
 			str=str+"\t"+a[i];
