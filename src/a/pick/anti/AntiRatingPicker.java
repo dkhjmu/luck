@@ -35,12 +35,30 @@ public class AntiRatingPicker extends AbstractPicker{
 //			}
 //		}
 		
+		//minor
+//		for(LineAnaVO vo:result){
+//			if(
+//					vo.getGap().val()>19 
+//					|| 
+//					vo.getC45().val() > 12
+//					){
+//				pvo3.add(vo.getBnu());
+//			}
+//		}
+		
+		//major
 		for(LineAnaVO vo:result){
-			if(vo.getGap().val()<=1){
+			if(
+//					vo.getGap().val() < 7
+//					&& 
+//					vo.getC45().val() > 5
+//					&&
+//					vo.getC45().val() < 12
+					vo.getHindex() !=0
+					){
 				pvo3.add(vo.getBnu());
 			}
 		}
-		
 		
 //		glist.add(pvo1);
 //		glist.add(pvo2);
@@ -65,10 +83,12 @@ public class AntiRatingPicker extends AbstractPicker{
 			for(PickVO v: g){
 				int val=Checker.checkResult(v.getArray(), right, bonus);
 				System.out.println(val);
+//				if(v.getArray().length>=1){
 				total++;
 				if(val>=3){
 					zero++;
 				}
+//				}
 			}
 		}
 		System.out.println("!!!!!!!!!!!!!!@@@@@@@@@@!!!!!!!!!!!!!!!!!");
