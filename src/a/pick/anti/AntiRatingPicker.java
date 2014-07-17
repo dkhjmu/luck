@@ -23,17 +23,28 @@ public class AntiRatingPicker extends AbstractPicker{
 		pvo2.setLimit(45);
 		PickVO pvo3=new PickVO(seq, 3);
 		pvo3.setLimit(45);
+//		for(LineAnaVO vo:result){
+//			if(vo.getHindex()==0 && vo.getGap().val()==0){
+//				pvo2.add(vo.getBnu());
+//			}else{
+//				if(vo.getC13().val()>0){
+//					pvo1.add(vo.getBnu());
+//				}else{
+//					pvo3.add(vo.getBnu());
+//				}
+//			}
+//		}
+		
 		for(LineAnaVO vo:result){
-			if(vo.getHindex()==0 && vo.getGap().val()==0){
-				pvo2.add(vo.getBnu());
-			}else{
+			if(vo.getC45().val()<3){
 				pvo3.add(vo.getBnu());
 			}
 		}
 		
+		
 //		glist.add(pvo1);
-		glist.add(pvo2);
-//		glist.add(pvo3);
+//		glist.add(pvo2);
+		glist.add(pvo3);
 		
 		return glist;
 	}
@@ -42,17 +53,29 @@ public class AntiRatingPicker extends AbstractPicker{
 		AntiRatingPicker p = new AntiRatingPicker();
 		int start=200;
 		int end  =500;
+		int zero=0;
+		int total=0;
 		for(;start<end;start++ ){
 			ArrayList<PickVO> g = p.pick(start);
-//			p.print(g);
+			p.printN(g);
 			
 			ArrayList<ResultVO> list = AnaVOMain.getResultList();
 			int[] right=list.get(start).getArray(false);
 			int bonus=list.get(start).get(7);
 			for(PickVO v: g){
-				System.out.println(Checker.checkResult(v.getArray(), right, bonus));
+				int val=Checker.checkResult(v.getArray(), right, bonus);
+				System.out.println(val);
+				if(v.getArray().length==1){
+					total++;
+					if(val==0){
+						zero++;
+					}
+				}
 			}
 		}
+		System.out.println("!!!!!!!!!!!!!!@@@@@@@@@@!!!!!!!!!!!!!!!!!");
+		System.out.println(zero);
+		System.out.println(total);
 		
 	}
 	
