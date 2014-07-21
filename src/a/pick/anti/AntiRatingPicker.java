@@ -53,8 +53,15 @@ public class AntiRatingPicker extends AbstractPicker{
 //					&& 
 //					vo.getC45().val() > 5
 //					&&
-//					vo.getC45().val() < 12
-					vo.getHindex() !=0
+//					(vo.getC6().val() == 1 || vo.getC6().val() == 2|| vo.getC6().val() == 3|| vo.getC6().val() == 4)
+//					&&
+					(vo.getGap().val() < 7 && vo.getC45().val() > 5)
+					&&
+					(vo.getHindex()!=0)
+					&&
+					(vo.getC13().val()==1)
+//					&&
+//					vo.getHindex() !=0
 					){
 				pvo3.add(vo.getBnu());
 			}
@@ -71,7 +78,7 @@ public class AntiRatingPicker extends AbstractPicker{
 		AntiRatingPicker p = new AntiRatingPicker();
 		int start=200;
 		int end  =500;
-		int zero=0;
+		int zero[]={0,0,0,0,0,0,0,0};
 		int total=0;
 		for(;start<end;start++ ){
 			ArrayList<PickVO> g = p.pick(start);
@@ -83,16 +90,17 @@ public class AntiRatingPicker extends AbstractPicker{
 			for(PickVO v: g){
 				int val=Checker.checkResult(v.getArray(), right, bonus);
 				System.out.println(val);
-//				if(v.getArray().length>=1){
-				total++;
-				if(val>=3){
-					zero++;
+				if(v.getArray().length>0){
+					total++;
+					zero[val]++;
 				}
-//				}
 			}
 		}
 		System.out.println("!!!!!!!!!!!!!!@@@@@@@@@@!!!!!!!!!!!!!!!!!");
-		System.out.println(zero);
+		for(int i=0;i<zero.length;i++){
+			System.out.println(i+":\t"+zero[i]);
+		}
+		
 		System.out.println(total);
 		
 	}

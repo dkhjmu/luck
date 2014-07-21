@@ -27,6 +27,7 @@ public class LineAnaVO implements Comparable<LineAnaVO> {
 	IntVO c42; // 42까지의 sum
 	IntVO c45; // 45까지의 sum
 	IntVO c13; // 13까지의 sum
+	IntVO c6; // 13까지의 sum
 	IntVO c100;// 100까지의 sum
 	
 	float avg;
@@ -438,6 +439,14 @@ public class LineAnaVO implements Comparable<LineAnaVO> {
 		this.c13 = c13;
 	}
 
+	public IntVO getC6() {
+		return c6;
+	}
+
+	public void setC6(IntVO c6) {
+		this.c6 = c6;
+	}
+	
 	public int getUpdn13() {
 		return updn13;
 	}

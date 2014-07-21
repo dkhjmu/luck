@@ -110,6 +110,10 @@ public class AnaVOMain {
 		CountCalc cal13=new CountCalc();
 		ArrayList<CalcVO> c13 = cal13.calc(list, seq-(13)+1, seq);
 
+		// 6 를 기준으로 한 합계
+		CountCalc cal6=new CountCalc();
+		ArrayList<CalcVO> c6 = cal6.calc(list, seq-(6)+1, seq);		
+		
 		// 100 를 기준으로 한 합계
 		CountCalc cal100=new CountCalc();
 		ArrayList<CalcVO> c100 = cal100.calc(list, seq-(100)+1, seq);
@@ -163,6 +167,7 @@ public class AnaVOMain {
 			tvo.setC42(c42.get(i).get(CountCalc.CNT));
 			tvo.setC45(c45.get(i).get(CountCalc.CNT));
 			tvo.setC13(c13.get(i).get(CountCalc.CNT));
+			tvo.setC6(c6.get(i).get(CountCalc.CNT));
 			tvo.setC100(c100.get(i).get(CountCalc.CNT));
 			tvo.setTval(total.get(i).get(T_VAL));
 			
