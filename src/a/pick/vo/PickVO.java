@@ -41,6 +41,10 @@ public class PickVO {
 	public int getGame() {
 		return game;
 	}
+	
+	public int size(){
+		return list.size();
+	}
 
 	public int[] getArray(){
 		Collections.sort(list);

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import a.act.main.AnaVOMain;
 import a.act.main.vo.ResultVO;
 import a.pick.AbstractPicker;
-import a.pick.anti.AntiPicker;
+import a.pick.anti.MajorRatingPicker;
 import a.pick.vo.PickVO;
 
 //import a.pick.AbstractPicker;
@@ -125,16 +125,17 @@ public class Checker {
 		return result[3]*5000+result[4]*50000+result[5]*1200000+result[6]*100000000+result[7]*50000000;
 	}
 	
-	public static int SERV_SEQ = 100;
+	public static int SERV_SEQ = 10;
 	
 	public static void main(String[] args) {
 //		NormalRandomPicker picker=new NormalRandomPicker();
 //		NormalRandomFilteredPicker picker=new NormalRandomFilteredPicker();
 //		RatingRandomPicker picker=new RatingRandomPicker();
-		AntiPicker picker = new AntiPicker();
+//		AntiPicker picker = new AntiPicker();
 //		TirdRandomPicker picker=new TirdRandomPicker();
+		MajorRatingPicker picker = new MajorRatingPicker();
 		
-//		picker.setTryN(1);
+		picker.setTryN(100);
 		Checker.simulating(picker);
 		
 	}
