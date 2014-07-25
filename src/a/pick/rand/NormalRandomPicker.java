@@ -11,6 +11,8 @@ import a.pick.vo.PickVO;
 public class NormalRandomPicker extends AbstractPicker{
 
 	
+	private static final int LIMITS = 15;
+
 	@Override
 	public ArrayList<PickVO> pick(int seq) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);
@@ -20,11 +22,18 @@ public class NormalRandomPicker extends AbstractPicker{
 		for(int i=0;i<tryN;i++){
 			ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
 			PickVO pvo=new PickVO(seq, i+1);
-			for(int j=0;j<6;j++){
+			pvo.setLimit(LIMITS);
+			for(int j=0;j<LIMITS;j++){
 				int r=getRand(result.size()-1);
 				pvo.add(result.get(r).getBnu());
 				result.remove(r);
 			}
+			
+//			for(int j=0;j<6;j++){
+//				int r=getRand(result.size()-1);
+//				pvo.add(result.get(r).getBnu());
+//				result.remove(r);
+//			}
 			
 			if(checkDuplicate(glist, pvo)){
 				System.out.print("D");
@@ -42,7 +51,9 @@ public class NormalRandomPicker extends AbstractPicker{
 	
 	public static void main(String[] args) {
 		NormalRandomPicker p=new NormalRandomPicker();
-		p.pick(300);
+		p.setTryN(10);
+		//p.pick(300);
+		p.simulating(10);
 	}
 
 	
