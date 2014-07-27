@@ -125,7 +125,7 @@ public class Checker {
 		return result[3]*5000+result[4]*50000+result[5]*1200000+result[6]*100000000+result[7]*50000000;
 	}
 	
-	public static int SERV_SEQ = 3;
+	public static int SERV_SEQ = 10;
 	
 	public static void main(String[] args) {
 		NormalRandomPicker picker=new NormalRandomPicker();
@@ -135,7 +135,7 @@ public class Checker {
 //		TirdRandomPicker picker=new TirdRandomPicker();
 //		MajorRatingPicker picker = new MajorRatingPicker();
 		
-		picker.setTryN(1);
+		picker.setTryN(100);
 		Checker.simulating(picker);
 		
 	}

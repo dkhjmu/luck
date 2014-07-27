@@ -31,7 +31,7 @@ public class NormalRandomFilteredPicker extends AbstractPicker{
 			ArrayList<LineAnaVO> temp = new ArrayList<LineAnaVO>();
 			PickVO pvo=new PickVO(seq, i+1);
 			for(int j=0;j<6;j++){
-				int r=getRand(result.size()-1);
+				int r=getRand(result.size());
 				temp.add(result.get(r));
 				pvo.add(result.get(r).getBnu());
 				result.remove(r);

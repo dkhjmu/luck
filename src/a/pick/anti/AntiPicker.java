@@ -52,7 +52,7 @@ public class AntiPicker extends AbstractPicker{
 		PickVO pvo3=new PickVO(seq, 2);
 		pvo3.setLimit(limit);
 		for(int j=0;j<limit;j++){
-			int r=getRand(result.size()-1);
+			int r=getRand(result.size());
 			pvo3.add(result.get(r).getBnu());
 			result.remove(r);
 		}

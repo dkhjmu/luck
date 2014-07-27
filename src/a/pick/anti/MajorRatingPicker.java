@@ -67,7 +67,7 @@ public class MajorRatingPicker extends AbstractPicker{
 		
 		
 		for(int j=0;j<15;j++){
-			int r=getRand(result.size()-1);
+			int r=getRand(result.size());
 			result.remove(r);
 		}
 		
