@@ -37,7 +37,7 @@ public class PatternMaker {
 	
 	public static void main(String[] args) {
 		System.out.println("start");
-//		int t[]={1,2,3,4,5,6,7,8,9,10};
+		int t[]={1,2,3,4,5,6,7,8,9,10};
 //		int t[]={
 //				4 ,
 //				13,
@@ -48,13 +48,13 @@ public class PatternMaker {
 //				42
 //		};
 		
-//		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
-//		
-//		getPtnMain(t, 2, map);
-//		
-//		printKeyNVal(map);
+		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
 		
-		System.out.println(getAllpattern(20,4));
+		getPtnMain(t, 2, map);
+		
+		printKeyNVal(map);
+		
+		//System.out.println(getAllpattern(20,4));
 		
 		System.out.println("end");
 	}

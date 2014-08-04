@@ -92,5 +92,13 @@ public class ArrayUtil {
 		}
 		return sum;
 	}
+	
+	public static int[] listToArray(ArrayList<IntVO> list) {
+		int[] array=new int[list.size()];
+		for(int j=0;j<list.size();j++){
+			array[j]=list.get(j).val();
+		}
+		return array;
+	}
 
 }

@@ -16,8 +16,6 @@ public class NormalRandomPicker extends AbstractPicker{
 	@Override
 	public ArrayList<PickVO> pick(int seq) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);
-		
-		
 		ArrayList<PickVO> glist=new ArrayList<PickVO>();
 		for(int i=0;i<tryN;i++){
 			ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);

@@ -74,6 +74,14 @@ public class PickVO {
 		System.out.println("SEQ\tGame\tn1\tn2\tn3\tn4\tn5\tn6");
 	}
 	
+	public void setPickerByPTN(String ptn){
+		String[] pps=ptn.split("-");
+		for(String p:pps){
+			IntVO v=new IntVO(p);
+			this.add(v.val());
+		}
+	}
+	
 	@Override
 	public String toString() {
 		String str=seq + "\t<" + game + ">";

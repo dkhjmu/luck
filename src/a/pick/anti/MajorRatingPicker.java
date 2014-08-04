@@ -66,10 +66,10 @@ public class MajorRatingPicker extends AbstractPicker{
 		ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
 		
 		
-		for(int j=0;j<15;j++){
-			int r=getRand(result.size());
-			result.remove(r);
-		}
+//		for(int j=0;j<15;j++){
+//			int r=getRand(result.size());
+//			result.remove(r);
+//		}
 		
 
 		//major
@@ -115,8 +115,9 @@ public class MajorRatingPicker extends AbstractPicker{
 	
 	public static void main(String[] args) {
 		MajorRatingPicker p = new MajorRatingPicker();
-		p.setTryN(100);
-		p.print(p.pick(300));
+		p.setTryN(10);
+//		p.print(p.pick(300));
+		p.simulating(5);
 		
 	}
 	
