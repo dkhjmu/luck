@@ -48,7 +48,7 @@ public class AntiRatingPicker extends AbstractPicker{
 		//major
 		for(LineAnaVO vo:result){
 			if(
-					vo.getGap().val() > 25
+//					!(vo.getGap().val() > 25)
 //					&& 
 //					vo.getC45().val() < 5
 //					&&
@@ -56,7 +56,9 @@ public class AntiRatingPicker extends AbstractPicker{
 //					&&
 //					vo.getC100().val() < 18
 //					&&
-//					(vo.getC6().val() == 1 || vo.getC6().val() == 2|| vo.getC6().val() == 3|| vo.getC6().val() == 4)
+//					!(vo.getC6().val() == 1 || vo.getC6().val() == 2|| vo.getC6().val() == 3|| vo.getC6().val() == 4)
+//					&&
+					vo.getC6().val()>=3
 //					&&
 //					(vo.getGap().val()>19 || vo.getC45().val() > 12)
 //					&&

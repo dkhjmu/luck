@@ -33,7 +33,7 @@ public class BNUPtnFilter {
 		return map;
 	}
 	
-	public boolean filtered(int[] rr){
+	public boolean filtered(int[] rr, int limit){
 		
 		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
 		PatternMaker.getPtnMain(rr, NORMAL_VALUE, map);
@@ -41,7 +41,7 @@ public class BNUPtnFilter {
 		while(iterator.hasNext()){
 			String key=iterator.next();
 			IntVO ptn = bnuMap.get(key);
-			if(ptn!=null && ptn.val()>1){
+			if(ptn!=null && ptn.val()>limit){
 				return true;
 			}
 		}
