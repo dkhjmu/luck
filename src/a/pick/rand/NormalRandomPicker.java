@@ -11,7 +11,7 @@ import a.pick.vo.PickVO;
 public class NormalRandomPicker extends AbstractPicker{
 
 	
-	private static final int LIMITS = 6;
+	private static final int LIMITS = 10;
 
 	@Override
 	public ArrayList<PickVO> pick(int seq) {
@@ -21,13 +21,13 @@ public class NormalRandomPicker extends AbstractPicker{
 			ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
 			PickVO pvo=new PickVO(seq, i+1);
 			pvo.setLimit(LIMITS);
-			for(int j=0;j<LIMITS;j++){
+			for(int j=0;j<6;j++){
 				int r=getRand(result.size());
 //				pvo.add(result.get(r).getBnu());
 				result.remove(r);
 			}
 			
-			for(int j=0;j<6;j++){
+			for(int j=0;j<LIMITS;j++){
 				int r=getRand(result.size());
 				pvo.add(result.get(r).getBnu());
 				result.remove(r);

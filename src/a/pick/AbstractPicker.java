@@ -6,6 +6,7 @@ import a.act.main.AnaVOMain;
 import a.act.main.vo.ResultVO;
 import a.checker.Checker;
 import a.pick.vo.PickVO;
+import a.util.ArrayUtil;
 
 public abstract class AbstractPicker {
 	
@@ -69,9 +70,11 @@ public abstract class AbstractPicker {
 //			printN(g);
 			
 			ArrayList<ResultVO> list = AnaVOMain.getResultList();
-			int[] right=list.get(start).getArray(false);
 			int bonus=list.get(start).get(7);
 			for(PickVO v: g){
+				int[] right=list.get(start).getArray(false);
+//				ArrayUtil.print(right);
+//				System.out.println(v);
 				int val=Checker.checkResult(v.getArray(), right, bonus);
 //				System.out.println(val);
 				if(v.getArray().length>0){

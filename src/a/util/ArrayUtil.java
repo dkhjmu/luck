@@ -39,6 +39,23 @@ public class ArrayUtil {
 		return ma;
 	}
 	
+	public static int[] tenByPtn(int[] rr){
+		int[] ma=new int[rr.length];
+		for(int j=0;j<rr.length;j++){
+			ma[j]=(int)(Math.floor((rr[j]-1)/10));
+		}
+		return ma;
+	}
+	
+	public static int[] fourFloorPtn(int[] rr){
+		int[] ma=new int[5];
+		int[] tb=tenByPtn(rr);
+		for(int j=0;j<tb.length;j++){
+			ma[tb[j]]++;
+		}
+		return ma;
+	}
+	
 	public static int sumArray(int[] mm) {
 		int sum=0;
 		for(int i=0;i<mm.length;i++){
@@ -55,12 +72,13 @@ public class ArrayUtil {
 	}
 	
 	public static void main(String[] args) {
-		int [] aa ={3, 2, 1};
-		aa=sort(aa);
-		System.out.println(Arrays.toString(aa));
-		System.out.println(sumArray(aa));
-		aa=minusPtn(aa);
-		System.out.println(Arrays.toString(aa));
+		int [] aa ={3, 2, 1, 45};
+//		aa=sort(aa);
+//		System.out.println(Arrays.toString(aa));
+//		System.out.println(sumArray(aa));
+//		aa=minusPtn(aa);
+		System.out.println(Arrays.toString(fourFloorPtn(aa)));
+		
 	}
 
 	public static int checkEven(int[] rr) {

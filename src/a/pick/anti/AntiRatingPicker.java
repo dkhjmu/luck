@@ -48,15 +48,19 @@ public class AntiRatingPicker extends AbstractPicker{
 		//major
 		for(LineAnaVO vo:result){
 			if(
-//					vo.getGap().val() > 23
+					vo.getGap().val() > 25
 //					&& 
-//					vo.getC45().val() > 5
+//					vo.getC45().val() < 5
 //					&&
-//					!(vo.getC6().val() == 1 || vo.getC6().val() == 2|| vo.getC6().val() == 3|| vo.getC6().val() == 4)
+//					vo.getC100().val() > 10
 //					&&
-					!(vo.getGap().val()>19 || vo.getC45().val() > 12)
-					&&
-					(vo.getGap().val() < 7 && vo.getC45().val() > 5)
+//					vo.getC100().val() < 18
+//					&&
+//					(vo.getC6().val() == 1 || vo.getC6().val() == 2|| vo.getC6().val() == 3|| vo.getC6().val() == 4)
+//					&&
+//					(vo.getGap().val()>19 || vo.getC45().val() > 12)
+//					&&
+//					(vo.getGap().val() < 7 && vo.getC45().val() > 5)
 //					&&
 //					(vo.getHindex()!=0)
 //					&&
@@ -71,13 +75,14 @@ public class AntiRatingPicker extends AbstractPicker{
 //		glist.add(pvo1);
 //		glist.add(pvo2);
 		glist.add(pvo3);
-		
+		System.out.println(pvo3);
+		System.out.println(pvo3.getArray().length);
 		return glist;
 	}
 	
 	public static void main(String[] args) {
 		AntiRatingPicker picker=new AntiRatingPicker();
-		picker.simulating(100);
+		picker.simulating(10);
 		
 	}
 	

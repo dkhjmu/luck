@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import a.act.main.AnaVOMain;
 import a.act.main.vo.ResultVO;
 import a.pick.AbstractPicker;
-import a.pick.rand.NormalRandomPicker;
+import a.pick.ptn.PtnPicker;
 import a.pick.vo.PickVO;
 
 //import a.pick.AbstractPicker;
@@ -36,20 +36,21 @@ public class Checker {
 	public static int[][] check(AbstractPicker picker, int seq, int rightA[], int bonus){
 		
 		
-		int[] rightClone=rightA.clone();
+		//int[] rightClone=rightA.clone();
 		
 		ArrayList<PickVO> glist = picker.pick(seq-1);
 		int input=0;
 		int resultV[][] = {{0},{0,0,0,0,0,0,0,0}};
 		for (int i = 0; i < glist.size(); i++) {
+			int[] rightClone=rightA.clone();
 			int[] resultA = glist.get(i).getArray();
 //			ArrayUtil.print(resultA);
 //			ArrayUtil.print(rightA);
-			int pv=Checker.checkResult(resultA, rightA, bonus);
+			int pv=Checker.checkResult(resultA, rightClone, bonus);
 			resultV[1][pv]++;
 			if (pv >= 5) {
 				System.out.print("right:");
-				printArray(rightClone);
+				printArray(rightA);
 				System.out.println("bonus:"+bonus);
 				System.out.println("");
 				System.out.print("input:");
@@ -100,7 +101,6 @@ public class Checker {
 			ss ="UP";
 		}
 		System.out.println("SUM:"+sum+"\t"+ss);
-		System.out.println("SUM:"+sum+"\t"+ss);
 		try{
 			Thread.sleep(33);
 		}catch(Exception e){
@@ -128,14 +128,15 @@ public class Checker {
 	public static int SERV_SEQ = 10;
 	
 	public static void main(String[] args) {
-		NormalRandomPicker picker=new NormalRandomPicker();
+//		NormalRandomPicker picker=new NormalRandomPicker();
 //		NormalRandomFilteredPicker picker=new NormalRandomFilteredPicker();
 //		RatingRandomPicker picker=new RatingRandomPicker();
 //		AntiPicker picker = new AntiPicker();
 //		TirdRandomPicker picker=new TirdRandomPicker();
 //		MajorRatingPicker picker = new MajorRatingPicker();
+		PtnPicker picker = new PtnPicker();
 		
-		picker.setTryN(100);
+		picker.setTryN(10);
 		Checker.simulating(picker);
 		
 	}

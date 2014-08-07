@@ -16,7 +16,7 @@ public class PatternMain {
 		for(int i=0;i<list.size();i++){
 			int[] t=list.get(i).getArray(false);
 			Arrays.sort(t);
-			PatternMaker.getPtnMain(t, 5, map);
+			PatternMaker.getPtnMain(t, 4, map);
 		}
 		
 		PatternMaker.printKeyNVal(map);

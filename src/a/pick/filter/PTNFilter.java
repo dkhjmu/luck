@@ -15,6 +15,7 @@ import a.ana.pattern.PatternMaker;
 public class PTNFilter {
 	private static final int FILTERED_INDEX_NUM = 5;
 
+	HashMap<String, IntVO> bnuMap=null;
 	HashMap<String, IntVO> gapMap=null;
 	HashMap<String, IntVO> gap2Map=null;
 	HashMap<String, IntVO> c45Map=null;
@@ -32,6 +33,8 @@ public class PTNFilter {
 			return gap2Map;
 		}else if("CNT45".equals(filterCode) && c45Map!=null){
 			return c45Map;
+		}else if("BNU".equals(filterCode) && bnuMap!=null){
+			return bnuMap;
 		}
 		
 		ArrayList<SeqStatVO> stat = SeqCntSumAnaMain.getSeqStatList(seq);
@@ -47,6 +50,8 @@ public class PTNFilter {
 					v = list.get(j).getGap();
 				}else if("GAP2".equals(filterCode)){
 					v = list.get(j).getGap2();
+				}else if("BNU".equals(filterCode)){
+					v = new IntVO(list.get(j).getBnu());
 				}else if("CNT45".equals(filterCode)){
 					v = list.get(j).getC45();
 				}else{
@@ -55,11 +60,7 @@ public class PTNFilter {
 				vlist.add(v);
 			}
 			
-			if("GAP".equals(filterCode)){
-				Collections.sort(vlist);
-			}else if("GAP2".equals(filterCode)){
-				Collections.sort(vlist);
-			}else if("CNT45".equals(filterCode)){
+			if("CNT45".equals(filterCode)){
 				sortDesc(vlist);
 			}else{
 				Collections.sort(vlist);

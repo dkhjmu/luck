@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import a.act.main.vo.IntVO;
+import a.util.ArrayUtil;
 
 public class PickVO {
 	int seq;
@@ -90,6 +91,11 @@ public class PickVO {
 			str=str+"\t"+a[i];
 		}
 		return  str;
+	}
+
+	public int getSum() {
+		int[] rr=getArray();
+		return ArrayUtil.sumArray(rr);
 	}
 	
 	
