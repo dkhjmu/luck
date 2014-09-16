@@ -29,8 +29,7 @@ public class PtnPicker  extends AbstractPicker{
 		for(LineAnaVO vo:result){
 			if(
 					//vo.getC45().val() < 6
-					
-					!(vo.getGap().val() > 25)
+					vo.getC13().val() < 5
 					&&
 					vo.getC100().val() > 10
 					&&
@@ -38,8 +37,9 @@ public class PtnPicker  extends AbstractPicker{
 					&&
 					!(vo.getGap().val()>19 || vo.getC45().val() > 12)
 					&&
-					!(vo.getC6().val()>=3)
-					
+					vo.getC6().val()<3
+					&&
+					(vo.getHindex() == 0 || vo.getGap().val() < 5)
 //					(vo.getC6().val() == 1 || vo.getC6().val() == 2|| vo.getC6().val() == 3|| vo.getC6().val() == 4)
 					
 			){	
@@ -68,11 +68,12 @@ public class PtnPicker  extends AbstractPicker{
 			int even = ArrayUtil.checkEven(rr);
 			int[] ff=ArrayUtil.fourFloorPtn(rr);
 			if(filter.filtered(rr, 1)==true 
-					|| sum<80
-					|| sum>210
+					|| sum<90
+					|| sum>170
 					|| even==6
+					|| even==0
 					|| ff[0] > 2
-					|| ff[1] > 2
+					|| ff[1] > 3
 					|| ff[2] > 3
 					|| ff[3] > 3
 					|| ff[4] > 2

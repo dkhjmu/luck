@@ -12,7 +12,7 @@ import a.ana.pattern.PatternMaker;
 
 public class BNUPtnFilter {
 
-	private static final int NORMAL_VALUE = 3;
+	private static final int NORMAL_VALUE = 4;
 	
 	HashMap<String, IntVO> bnuMap=null;
 	
@@ -34,7 +34,6 @@ public class BNUPtnFilter {
 	}
 	
 	public boolean filtered(int[] rr, int limit){
-		
 		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
 		PatternMaker.getPtnMain(rr, NORMAL_VALUE, map);
 		Iterator<String> iterator = map.keySet().iterator();
