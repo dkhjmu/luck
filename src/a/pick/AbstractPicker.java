@@ -59,6 +59,10 @@ public abstract class AbstractPicker {
 	}
 	
 	public void simulating(int SERV_SEQ){
+	  simulating(SERV_SEQ, false);
+	}
+	
+	public void simulating(int SERV_SEQ, boolean printable){
 		ArrayList<ResultVO> mlist = AnaVOMain.getResultList();
 		int maxSeq=mlist.size();
 		int start = maxSeq - SERV_SEQ ;
@@ -73,13 +77,18 @@ public abstract class AbstractPicker {
 			int bonus=list.get(start).get(7);
 			for(PickVO v: g){
 				int[] right=list.get(start).getArray(false);
-//				ArrayUtil.print(right);
-//				System.out.println(v);
 				int val=Checker.checkResult(v.getArray(), right, bonus);
 //				System.out.println(val);
 				if(v.getArray().length>0){
 					total++;
 					zero[val]++;
+					if(val>3){
+					  if(printable){
+	                    System.out.println("##############################");
+	                    System.out.println(v);
+	                    System.out.println("##############################");
+	                  }
+					}
 				}
 			}
 		}

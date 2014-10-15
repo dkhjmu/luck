@@ -55,9 +55,9 @@ public class AnaPicker  extends AbstractPicker{
 			int sum=ArrayUtil.sumArray(rr);
 //			int even = ArrayUtil.checkEven(rr);
 			int[] ff=ArrayUtil.fourFloorPtn(rr);
-			if(filter.filtered(rr, 1)==true 
+			if(filter.filtered(rr, 3)==true 
 					|| sum<90
-					|| sum>170
+					|| sum>150
 					|| ff[0] > 2
 					|| ff[1] > 3
 					|| ff[2] > 3

@@ -12,7 +12,7 @@ import a.ana.pattern.PatternMaker;
 
 public class BNUPtnFilter {
 
-	private static final int NORMAL_VALUE = 4;
+	private static final int NORMAL_VALUE = 3;
 	
 	HashMap<String, IntVO> bnuMap=null;
 	
