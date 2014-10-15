@@ -61,13 +61,19 @@ public class SeqHindexAnaMain {
 				LineAnaVO lineAnaVO = lList.get(i);
 				if(lineAnaVO.getHindex() > 0){
 				  //cvo.add(lineAnaVO.getHindex()+"_"+lineAnaVO.getGap().val()+"_"+lineAnaVO.getC13().val(), 1);
-				  cvo.add(lineAnaVO.getHindex()+"_"+ts(lineAnaVO.getGap()), 1);
+//				  cvo.add(lineAnaVO.getHindex()+"_"+ts(lineAnaVO.getGap()), 1);
 				  if(lineAnaVO.getNext()>0){
 //				    cvo.add(lineAnaVO.getHindex()+"_"+lineAnaVO.getGap().val()+"_"+lineAnaVO.getC13().val()+"a", 1);
 //				    cvo.add(lineAnaVO.getHindex()+"_"+ts(lineAnaVO.getGap())+"a", 1);
 				  }else{
 //				    cvo.add(lineAnaVO.getHindex()+"_"+ts(lineAnaVO.getGap())+"a", 0);
 				  }
+				}
+				cvo.add(ts(lineAnaVO.getGap().val())+"", 1);
+				if(lineAnaVO.getNext()>0){
+				  cvo.add(ts(lineAnaVO.getGap().val())+"a", 1);
+				}else{
+				  cvo.add(ts(lineAnaVO.getGap().val())+"a", 0);
 				}
 			}// for in
 			System.out.println(k);
