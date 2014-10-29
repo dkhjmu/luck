@@ -52,9 +52,9 @@ public class AnaPickerV2 extends AbstractPicker {
 
     
     
-//    pvo = getList13PVO(pvo, list13);
-//    pvo = getList45PVO(pvo, list45);
-//    pvo = getList100PVO(pvo, list100);
+    pvo = getList13PVO(pvo, list13);
+    pvo = getList45PVO(pvo, list45);
+    pvo = getList100PVO(pvo, list100);
     
     System.out.println(pvo.toString());
 
@@ -208,7 +208,7 @@ public class AnaPickerV2 extends AbstractPicker {
 
   public static void main(String[] args) {
     AnaPickerV2 p = new AnaPickerV2();
-    p.simulating(100, true);
+    p.simulating(10, true);
 
   }
 }

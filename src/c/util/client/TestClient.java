@@ -10,7 +10,10 @@ import java.net.URL;
 public class TestClient {
   public static void main(String[] args) {
     String url = "http://localhost:8153/go/rest/alm/pipelines/creates";
-    String input = "{\"name\":\"BAT_UST\",\"code\":\"11\",\"pipelines\":[{\"name\":\"feature-BAT-1-deleteME\",\"environments\":{\"DEST\":\"C:/tmp/temp\"},\"materials\":[{\"type\":\"GitMaterial\",\"url\":\"http://alm:platform0!@70.50.8.111/alm/batman.git\",\"branch\":\"feature-BAT-1-deleteME\"}],\"stages\":[{\"name\":\"build\",\"type\":\"auto\",\"jobs\":[{\"name\":\"build\",\"tasks\":[{\"name\":\"build\",\"taskOptions\":\"exec\",\"command\":\"java\",\"argList\":\"-version\"}]}]}]}]}";
+//    String url = "http://localhost:8153/go/rest/alm/pipeline/feature-BAT-1-deleteME/modify/env";
+    String input = "{\"name\":\"BAT_UST\",\"code\":\"10000\",\"pipelines\":[{\"name\":\"fn_부와왘\",\"environments\":{\"DEST\":\"C:\\tmp\\temp\"},\"materials\":[{\"type\":\"GitMaterial\",\"url\":\"http://alm:platform0!@70.50.8.111/alm/batman.git\",\"branch\":\"feature-BAT-1-deleteME\"}],\"stages\":[{\"name\":\"build\",\"type\":\"auto\",\"jobs\":[{\"name\":\"build\",\"tasks\":[{\"name\":\"build\",\"taskOptions\":\"exec\",\"command\":\"java\",\"argList\":\"-version\"}]}]}]}]}";
+//    String input = "{\"name\":\"DEST\",\"value\":\"C:\\aa\\ff\\ee22\"}";
+    System.out.println(input);
     sendRequestPostToGoServer(url, input);
   }
   

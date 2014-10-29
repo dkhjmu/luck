@@ -1,7 +1,6 @@
 package a.ana.main;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import a.act.ana.vo.ConditionStatVO;
 import a.act.ana.vo.LineAnaVO;
@@ -13,10 +12,11 @@ public class SeqHindexAnaMain {
 	
 	public static void main(String[] args) {
 		ArrayList<SeqStatVO> list = getSeqStatList();
-//		SeqStatVO.printHeader();
-//		for(SeqStatVO vo : list){
-//			System.out.println(vo);
-//		}
+		SeqStatVO.printHeader();
+		for(SeqStatVO vo : list){
+			System.out.println(vo);
+		}
+		
 	}
 	
 	public static int getMaxSeq(ArrayList<SeqStatVO> list) {
