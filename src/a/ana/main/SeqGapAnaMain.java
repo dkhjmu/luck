@@ -58,7 +58,7 @@ public class SeqGapAnaMain {
 		AnaVOMain.printCols();
 		ArrayList<LineAnaVO> tempList=null;
 		//세야할 대상
-		int k=302;
+		int k=350;
 		CalcVO gap2=new CalcVO(k, 0);
 		ArrayList<LineAnaVO> lList = AnaVOMain.getAnaVOList(list, k);
 		for(int i=0;i<lList.size();i++){

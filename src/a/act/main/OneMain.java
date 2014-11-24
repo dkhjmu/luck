@@ -10,7 +10,7 @@ public class OneMain {
 	
 	public static void main(String[] args) {
 		ArrayList<ResultVO> list = AnaVOMain.getResultList();
-		int seq=305;
+		int seq=350;
 		ArrayList<LineAnaVO> dd = AnaVOMain.getAnaVOList(list, seq);
 		AnaVOMain.printCols();
 		for(int i=0;i<dd.size();i++){
