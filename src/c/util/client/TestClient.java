@@ -11,7 +11,8 @@ import java.net.URL;
 public class TestClient {
   public static void main(String[] args) {
 //    String url = "http://localhost:8153/go/rest/alm/pipelines/creates";
-    String url = "http://localhost:8153/go/rest/alm/user/add";
+//    String url = "http://localhost:8153/go/rest/alm/user/add";
+    String url = "http://localhost:8080/scout/buildfile/uploadFile";
 //    String url = "http://localhost:8153/go/rest/alm/1/pipelineHistory/app-common123123";
 //    String url = "http://localhost:8153/go/rest/alm/testt/pipelineGroupStatus/test";
 //    String url = "http://70.121.244.19:8153/go/rest/alm/pipeline/scout33_RLS_build/modify/env";
