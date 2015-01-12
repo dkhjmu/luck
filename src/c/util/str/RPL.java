@@ -2,6 +2,8 @@ package c.util.str;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RPL {
   public static void main(String[] args) {
@@ -21,6 +23,29 @@ public class RPL {
     System.out.println(version);
     
     System.out.println(makePath("1", new BigDecimal("10")).replace("\\", "/"));
+    
+    
+    String pjtSCMRepoUrl = "http://70.50.168.83/gitlab/alm/petclinic.git";
+    
+    
+    System.out.println(pjtSCMRepoUrl.substring(pjtSCMRepoUrl.lastIndexOf("/")+1).replace(".git", "")); 
+    
+    int li=pjtSCMRepoUrl.lastIndexOf("/");
+    System.out.println(pjtSCMRepoUrl.substring(0, li));
+
+    Pattern pattern = Pattern.compile("(http://*/)(.*?)(\\.git)");
+    Matcher matcher = pattern.matcher(pjtSCMRepoUrl);
+    
+    if(matcher.matches()){
+      System.out.println("wow");
+      System.out.println(matcher.group());
+      System.out.println(matcher.group(1));
+      System.out.println(matcher.group(2));
+    }else{
+      System.out.println("mom");
+      
+    }
+
     
   }
   

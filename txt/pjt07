@@ -1,0 +1,78 @@
+<pipelines group="PJT07_DEV" pjtCode="10">
+    <pipeline name="PJT07_DEV_deploy">
+      <materials>
+        <pipeline pipelineName="PJT07_DEV_build" stageName="build" materialName="deploying" />
+      </materials>
+      <stage name="deploy">
+        <jobs>
+          <job name="deploy">
+            <tasks>
+              <exec command="java" args="-version" />
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+    <pipeline name="PJT07_DEV_build" isLocked="false">
+      <materials>
+        <git url="http://alm:platform0!@70.121.224.25/gitlab/alm/testpjt07.git" branch="development" />
+      </materials>
+      <stage name="build">
+        <jobs>
+          <job name="build">
+            <tasks>
+              <exec command="java" args="-version">
+                <runif status="passed" />
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+  </pipelines>
+<pipelines group="PJT07_RLS" pjtCode="10">
+    <pipeline name="PJT07_RLS_package">
+      <environmentvariables>
+        <variable name="DEST">
+          <value>C:\temp\10\rls</value>
+        </variable>
+      </environmentvariables>
+      <materials>
+        <pipeline pipelineName="PJT07_RLS_build" stageName="build" materialName="packaging" />
+      </materials>
+      <stage name="package">
+        <jobs>
+          <job name="package">
+            <tasks>
+              <exec command="java" args="-version">
+                <runif status="passed" />
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+    <pipeline name="PJT07_RLS_build">
+      <materials>
+        <git url="http://alm:platform0!@70.121.224.25/gitlab/alm/testpjt07.git" />
+      </materials>
+      <stage name="build">
+        <approval type="manual" />
+        <jobs>
+          <job name="build">
+            <tasks>
+              <exec command="mvn" args="package">
+                <runif status="passed" />
+              </exec>
+              <exec command="uploadFile">
+                <arg>http://70.121.224.24:9081/scout/buildfile</arg>
+                <arg>%DEST%</arg>
+                <arg>%cd%/target</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+  </pipelines>
