@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+
+<title>Full Page Background Image | jQuery</title>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #000000;
+}
+
+#bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.bgwidth {
+	width: 100%;
+}
+
+.bgheight {
+	height: 100%;
+}
+
+#page-wrap {
+	position: relative;
+	width: 400px;
+	margin: 50px auto;
+	padding: 20px;
+	background: white;
+	-moz-box-shadow: 0 0 20px black;
+	-webkit-box-shadow: 0 0 20px black;
+	box-shadow: 0 0 20px black;
+}
+
+p {
+	font: 15px/2 Georgia, Serif;
+	margin: 0 0 30px 0;
+	text-indent: 40px;
+}
+</style>
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+	$(function() {
+
+		var theWindow = $(window), $bg = $("#bg"), aspectRatio = $bg.width()
+				/ $bg.height();
+
+		function resizeBg() {
+
+			if ((theWindow.width() / theWindow.height()) < aspectRatio) {
+				$bg.removeClass().addClass('bgheight');
+			} else {
+				$bg.removeClass().addClass('bgwidth');
+			}
+
+		}
+
+		theWindow.resize(function() {
+			resizeBg();
+		}).trigger("resize");
+
+	});
+
+	function cycleImages() {
+		$("#bg").fadeOut(3000);
+		setTimeout(function() {
+			var ran = Math.floor((Math.random() * 10) + 1);
+			$("#bg").attr('src', "D:/back/" + ran + ".JPG");
+		}, 3000);
+		$("#bg").fadeIn(2000);
+
+	}
+
+	$(document).ready(
+			function() {
+				// run every 7s
+				setInterval('cycleImages()', 30000);
+
+				// Create two variable with the names of the months and days in an array
+				var monthNames = [ "January", "February", "March", "April",
+						"May", "June", "July", "August", "September",
+						"October", "November", "December" ];
+				var dayNames = [ "Sunday", "Monday", "Tuesday", "Wednesday",
+						"Thursday", "Friday", "Saturday" ]
+
+				// Create a newDate() object
+				var newDate = new Date();
+				// Extract the current date from Date object
+				newDate.setDate(newDate.getDate());
+				// Output the day, date, month and year    
+				$('#Date').html(
+						dayNames[newDate.getDay()] + " " + newDate.getDate()
+								+ ' ' + monthNames[newDate.getMonth()] + ' '
+								+ newDate.getFullYear());
+
+				setInterval(function() {
+					// Create a newDate() object and extract the minutes of the current time on the visitor's
+					var minutes = new Date().getMinutes();
+					console.log(minutes);
+					// Add a leading zero to the minutes value
+					$("#min").html((minutes < 10 ? "0" : "") + minutes);
+				}, 1000);
+
+				setInterval(function() {
+					// Create a newDate() object and extract the hours of the current time on the visitor's
+					var hours = new Date().getHours();
+					// Add a leading zero to the hours value
+					$("#hours").html((hours < 10 ? "0" : "") + hours);
+				}, 1000);
+
+			});
+</script>
+
+</head>
+
+<body>
+
+	<img src="d:/back/1.jpg" id="bg" alt="">
+
+	<div class="page-wrap">
+		<p>aaaaaaaaaa</p>
+	</div>
+</body>
+
+</html>

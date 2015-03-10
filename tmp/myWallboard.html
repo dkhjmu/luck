@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>My wallboard</title>
+<style type="text/css">
+body { //
+	opacity: 0.3;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium",
+		"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.back-info {
+	text-align: right;
+	height: 50px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-right: 15px;
+}
+
+.menulinks {
+	color: gray;
+	height: 50px;
+	position: absolute;
+	bottom: 0;
+	left: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+.workitems {
+	width:500px;
+	position: absolute;
+	bottom: 65px;
+	left: 3px;
+	margin-bottom: 0px;
+	text-align: left;
+	background-color: #00000f;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.172549) 0px 6px 12px 0px;
+	color:white;
+}
+
+.settings {
+	width:300px;
+	position: absolute;
+	bottom: 65px;
+	left: 3px;
+	margin-bottom: 0px;
+	text-align: left;
+	background-color: #00000f;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.172549) 0px 6px 12px 0px;
+	color:white;
+}
+
+.talks {
+	width:510px;
+	position: absolute;
+	bottom: 95px;
+	right: 3px;
+	margin-bottom: 0px;
+	text-align: left;
+	background-color: #00000f;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.172549) 0px 6px 12px 0px;
+	color:white;
+}
+
+.activities {
+	width:500px;
+	position: absolute;
+	bottom: 65px;
+	right: 3px;
+	margin-bottom: 0px;
+	text-align: left;
+	background-color: #00000f;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.172549) 0px 6px 12px 0px;
+	color:white;
+}
+
+.todoList {
+	width:500px;
+	position: absolute;
+	bottom: 65px;
+	right: 3px;
+	margin-bottom: 0px;
+	text-align: left;
+	background-color: #00000f;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.172549) 0px 6px 12px 0px;
+	color:white;
+}
+
+.talks_recv {
+	min-height:30px;
+	width:470px;
+	right: 3px;
+	margin-bottom: 15px;
+	text-align: left;
+	text-indent:5px;
+	background-color: #ffffff;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.172549) 0px 6px 12px 0px;
+	margin-left:10px;
+	margin-right:20px;
+	margin-top:20px;
+	color:black;
+}
+
+.talks_send {
+	min-height:30px;
+	width:470px;
+	right: 3px;
+	margin-bottom: 15px;
+	text-align: left;
+	text-indent:5px;
+	background-color: yellow;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.172549) 0px 6px 12px 0px;
+	margin-left:20px;
+	margin-right:10px;
+	margin-top:20px;
+	color:black;
+}
+
+
+.write-talks {
+	width:510px;
+	position: absolute;
+	bottom: 65px;
+	right: 3px;
+	margin-bottom: 0px;
+	text-align: left;
+	background-color: #ffffff;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.todolinks {
+	color: gray;
+	height: 50px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-right: 15px;
+}
+
+.links_hover {
+	color: white;
+	border-bottom-color: rgb(255, 255, 255);
+	border-bottom-style: solid;
+	border-bottom-width: 6px;
+	cursor: pointer;
+}
+
+.toggle {
+	color: white;
+	border-bottom-color: rgb(255, 255, 255);
+	border-bottom-style: solid;
+	border-bottom-width: 6px;
+	cursor: pointer;
+}
+
+span.iicons {
+	color: gray;
+	text-shadow: 1px 1px 2px #000000;
+	font-size: 20px;
+	font-weight: 40;
+}
+
+span.footers {
+	color: gray;
+	text-shadow: 1px 1px 2px #000000;
+	font-size: 25px;
+	font-weight: 40;
+}
+
+span.date {
+	color: white;
+	text-shadow: 2px 2px 8px #000000;
+	font-size: 25px;
+	font-weight: 40;
+}
+
+span.photo {
+	color: white;
+	text-shadow: 2px 2px 8px #000000;
+	font-size: 15px;
+	font-weight: 20;
+}
+
+span.greeting {
+	color: white;
+	text-shadow: 2px 2px 8px #000000;
+	font-size: 65px;
+	font-weight: 0;
+}
+
+span.time {
+	color: white;
+	text-shadow: 2px 2px 8px #000000;
+	font-size: 180px;
+	font-weight: 40;
+}
+
+span.today {
+	color: white;
+	text-shadow: 2px 2px 8px #000000;
+	font-size: 35px;
+	font-weight: 0;
+}
+
+input.focus {
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: none;
+	background-origin: padding-box;
+	background-size: auto;
+	border-bottom-color: rgb(255, 255, 255);
+	border-bottom-style: solid;
+	border-bottom-width: 3px;
+	border-image-outset: 0px;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-width: 1;
+	border-left-style: none;
+	border-right-style: none;
+	border-top-style: none;
+	color: rgb(255, 255, 255);
+	font-size: 30px;
+	font-weight: bold;
+	height: 36px;
+	line-height: 36px;
+	margin-bottom: 0px;
+	outline-color: rgb(255, 255, 255);
+	outline-style: none;
+	outline-width: 0px;
+	padding-bottom: 2px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 1px;
+	text-align: center;
+	text-shadow: 2px 2px 8px #000000;
+	vertical-align: baseline;
+	width: 510px;
+	word-spacing: 0px;
+	writing-mode: lr-tb;
+	zoom: 1;
+}
+</style>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.bootstraptheme.com/concrete/css/ccm.base.css" />
+<script type="text/javascript"
+	src="http://cdn.bootstraptheme.com/concrete/js/jquery.js"></script>
+
+<script type="text/javascript" src="./js/backstretch.js"></script>
+<script type="text/javascript">
+
+	var backSrcs = [
+			['01.jpg', 'Kota Kinabalu', 'Beach', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['02.jpg', 'Korea', 'Flower 1', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['03.jpg', 'Korea', 'Lycoris', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['04.jpg', 'Korea', 'Geumsan', 'Gyeongsangnamdo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['05.jpg', 'Korea', 'Flower 2', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['06.jpg', 'Kota Kinabalu', 'Lotus', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['07.jpg', 'Kota Kinabalu', 'Flower 3', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['08.jpg', 'Korea', 'Lotus', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['09.jpg', 'Korea', 'Sea gull', 'Dokdo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['10.jpg', 'Korea', 'Flower 4', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['11.jpg', 'Korea', 'Dokdo', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['12.jpg', 'Korea', 'Sunset and Sea gull', 'Shihwaho', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['13.jpg', 'Korea', 'Dokdo', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['14.jpg', 'Korea', 'Incheon Bridge 1', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['15.jpg', 'Korea', 'Incheon Bridge 2', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['16.jpg', 'Korea', 'Flower 5', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['17.jpg', 'Korea', 'Incheon Sun rise 1', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['18.jpg', 'Korea', 'Incheon Sun rise 2', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['19.jpg', 'Korea', 'Idan Warterfall 1 ', 'Bangteasan, Gangwondo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['20.jpg', 'Korea', 'Siheungsa ', 'Seoraksan, Gangwondo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['21.jpg', 'Korea', 'Cosmos 1', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['22.jpg', 'Korea', 'Seonnyeobawi 1 ', 'Eurwangri, Incheon', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['23.jpg', 'Korea', 'Incheon Bridge 3', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['24.jpg', 'Korea', 'Incheon Bridge 4', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['25.jpg', 'Korea', 'Incheon Bridge 5', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['26.jpg', 'Korea', 'Songdo', 'Incheon', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['27.jpg', 'Korea', 'Cosmos 2', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['28.jpg', 'Korea', 'Fireworks 1 ', 'Songdo, Incheon', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['29.jpg', 'Korea', 'Fireworks 2 ', 'Songdo, Incheon', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['30.jpg', 'Korea', 'Crape myrtle', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['31.jpg', 'Korea', 'Seonnyeobawi 2 ', 'Eurwangri, Incheon', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['32.jpg', 'Korea', 'Sunset 1', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['33.jpg', 'Korea', 'Dragonfly 1', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['34.jpg', 'Korea', 'wet fog Incheon', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['35.jpg', 'Korea', 'Cosmos 3', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['36.jpg', 'Korea', 'Incheon Bridge 6', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['37.jpg', 'Korea', 'Ulsanbawi 1 ', 'Seoraksan, Gangwondo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['38.jpg', 'Korea', 'Fireworks 3 ', 'Songdo, Incheon', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['39.jpg', 'Korea', 'Songdo', 'Incheon', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['40.jpg', 'Korea', 'Dragonfly 2', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['41.jpg', 'Korea', 'Idan Warterfall 2', 'Bangteasan, Gangwondo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['42.jpg', 'Korea', 'Sunrise Sihwaho', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['43.jpg', 'Korea', 'Sihwaho', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['44.jpg', 'Korea', 'Incheon Bridge 7', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['45.jpg', 'Korea', 'Sunrise ', 'Songdo, Incheon', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['46.jpg', 'Korea', 'Metasequoia road 1 ', 'Damyang, Jeollanamdo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['47.jpg', 'Korea', 'Bukhansan Seoul', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['48.jpg', 'Korea', 'Bee', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['49.jpg', 'Korea', 'Incheon Bridge 8', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['50.jpg', 'Korea', 'Metasequoia road 2 ', 'Damyang, Jeollanamdo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['51.jpg', 'Korea', 'Ulsanbawi 2 ', 'Seoraksan, Gangwondo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['52.jpg', 'Korea', 'Camomile 1', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['53.jpg', 'Korea', 'Yeonanbudu Incheon', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['54.jpg', 'Korea', 'Maple 1', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['55.jpg', 'Korea', 'Maple 2', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['56.jpg', 'Korea', 'Cosmos 3', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['57.jpg', 'Korea', 'Jeongseojin', 'Incheon', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['58.jpg', 'Korea', 'Camomile 2', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['59.jpg', 'Korea', 'Fireworks 4 ', 'Songdo, Incheon', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['60.jpg', 'Korea', 'Maple 3', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['61.jpg', 'Korea', 'Butterfly 1', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['62.jpg', 'Korea', 'Juknokwon  ', 'Damyang, Jeollanamdo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['63.jpg', 'Korea', 'Sea gull', 'Sihwaho', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['64.jpg', 'Korea', 'Butterfly 2', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['65.jpg', 'Korea', 'Seoraksan', 'Gangwondo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['66.jpg', 'Korea', 'Butterfly 3', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['67.jpg', 'Korea', 'Hajodae', 'Gangwondo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['68.jpg', 'Korea', 'Butterfly 4', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['69.jpg', 'Korea', 'Cheonji', 'Baekdusan', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['70.jpg', 'Korea', 'Ulsanbawi 3 ', 'Seoraksan, Gangwondo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['71.jpg', 'Korea', 'Bees', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['72.jpg', 'Korea', 'Kkotji ', 'Taean, Chungcheongnamdo', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['73.jpg', 'Korea', 'Gyeongbokgung', 'Seoul', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['74.jpg', 'Korea', 'Butterfly 5', '', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+			['75.jpg', 'Korea', 'Sinseongbong ', 'Danyang, Chungcheongbuk-do', 'Daljoong, Kang', 'http://blog.daum.net/robo1510'],
+	];
+
+	function setSrc(){
+		var ran = Math.floor((Math.random() * 75));
+		$.backstretch("D:/back/best/" + backSrcs[ran][0]);
+		var desc = ' ' +  backSrcs[ran][2] +', ';
+		if(backSrcs[ran][3] != ''){
+			desc = desc + backSrcs[ran][3] +', '; 
+		}
+		desc = desc + backSrcs[ran][1] +'';
+		$('#photoDesc').html(desc);
+		
+		$('#photographer').html(backSrcs[ran][4]);
+		$('#photographer').attr('href',backSrcs[ran][5]);
+	}
+
+	function cycleImages() {
+		var cssProps = getCenterProps($("#center"));
+		$("#center").css(cssProps);
+		$("#center").fadeOut(2000);
+		
+		setTimeout(function() {
+			setSrc();
+		}, 1900);
+		
+		
+		$("#center").fadeIn(2000);
+	}
+
+	$(document).ready(
+			function() {
+				setSrc();
+				setInterval('cycleImages()', 180000);
+
+				var monthNames = [ "January", "February", "March", "April",
+						"May", "June", "July", "August", "September",
+						"October", "November", "December" ];
+				var dayNames = [ "Sun", "Mon", "Tues", "Wed", "Thu", "Fri",
+						"Sat" ]
+				var newDate = new Date();
+				newDate.setDate(newDate.getDate());
+				$('#Date').html(
+						' ' + (newDate.getMonth() + 1) + "/"
+								+ newDate.getDate() + ' '
+								+ dayNames[newDate.getDay()]);
+
+				setInterval(function() {
+					var minutes = new Date().getMinutes();
+					$("#min").html((minutes < 10 ? "0" : "") + minutes);
+				}, 1000);
+
+				setInterval(function() {
+					var hours = new Date().getHours();
+					$("#hours").html(hours);
+				}, 1000);
+
+				setTimeout(function() {
+					var cssProps = getCenterProps($("#center"));
+					$("#center").css(cssProps);
+					$("#center").fadeIn(2000);
+				}, 500);
+			});
+
+	$(window).resize(function() {
+		var cssProps = getCenterProps($("#center"));
+		$("#center").css(cssProps);
+	});
+
+	var getCenterProps = function(obj) {
+		return {
+			'position' : 'absolute',
+			'top' : (($(window).height() - $(obj).outerHeight()) / 2) + 'px',
+			'left' : (($(window).width() - $(obj).outerWidth()) / 2) + 'px'
+		}
+	}
+
+	function footerHover(obj) {
+		$(obj).addClass("links_hover");
+		$(obj).find("span").css("color", "white");
+	}
+
+	function footerOut(obj) {
+		if($(obj).hasClass("toggle")){
+			
+		}else{
+			$(obj).removeClass("links_hover");
+			$(obj).find("span").css("color", "gray");
+		}
+	}
+	
+	function toggleOut(obj){
+		$(obj).removeClass("toggle");
+		$(obj).removeClass("links_hover");
+		$(obj).find("span").css("color", "gray");
+	}
+	
+	function openWorkitems(obj){
+		if(toggleMenu(obj)){
+			$(".settings").fadeOut(500);
+			toggleOut($("#menuSettings"));
+			$(".workitems").fadeIn(500);
+		}else{
+			$(".workitems").fadeOut(500);
+		}
+	}
+	
+	function openSettings(obj){
+		if(toggleMenu(obj)){
+			$(".workitems").fadeOut(500);
+			toggleOut($("#menuWorkitems"));
+			$(".settings").fadeIn(500);
+		}else{
+			$(".settings").fadeOut(500);
+		}
+	}
+	
+	function openTalks(obj){
+		if(toggleMenu(obj)){
+			$(".activities").fadeOut(500);
+			toggleOut($("#menuActivities"));
+			$(".todoList").fadeOut(500);
+			toggleOut($("#menuTodo"));
+			$("#talk_box").fadeIn(500);
+		}else{
+			$("#talk_box").fadeOut(500);
+		}
+	}
+	
+	function openTodo(obj){
+		if(toggleMenu(obj)){
+			$(".activities").fadeOut(500);
+			toggleOut($("#menuActivities"));
+			$("#talk_box").fadeOut(500);
+			toggleOut($("#menuTalks"));
+			$(".todoList").fadeIn(500);
+		}else{
+			$(".todoList").fadeOut(500);
+		}
+	}
+	
+	function openActivities(obj){
+		if(toggleMenu(obj)){
+			$("#talk_box").fadeOut(500);
+			toggleOut($("#menuTalks"));
+			$(".todoList").fadeOut(500);
+			toggleOut($("#menuTodo"));
+			$(".activities").fadeIn(500);
+		}else{
+			$(".activities").fadeOut(500);
+		}
+	}
+	
+	function toggleMenu(obj){
+		if($(obj).hasClass("toggle")){
+			$(obj).removeClass("toggle");
+			return false;
+		}else{
+			$(obj).addClass("toggle");
+			$(obj).addClass("links_hover");
+			$(obj).find("span").css("color", "white");
+			return true;
+		}
+	}
+</script>
+</head>
+<body>
+	<div class="absolute" style="margin-top: 15px">
+		&nbsp;<span id="Date" class="date"></span>
+	</div>
+	
+	<div class="back-info" style="margin-top: 15px">
+		<span id="photoDesc" class="photo"></span><br>
+		<a id="photographer" style="color:white;text-shadow: 2px 2px 8px #000000;" href="" target="_blank"></a>
+	</div>
+	
+	<div id="center" style="text-align: center; display: none;">
+		<div style="height: 240px">
+			<span id="hours" class="time"></span><span class="time">:</span><span
+				id="min" class="time"></span>
+		</div>
+		<div>
+			<span class="greeting">Good evening, 호진.</span>
+		</div>
+		<div style="margin-top: 80px">
+			<span class="today">What is your main focus for today?</span><br>
+			<input class="focus" type="text" />
+		</div>
+	</div>
+
+		
+	<div class="menulinks" id="menuSettings" style="width: 50px;"
+		onmouseover="footerHover(this)" onmouseout="footerOut(this)" onclick="openSettings(this)">
+		<span class="glyphicon glyphicon-cog iicons" style="font-size: 25px"></span>
+	</div>
+	<div class="menulinks" id="menuWorkitems" style="margin-left: 60px"
+		onmouseover="footerHover(this)" onmouseout="footerOut(this)" onclick="openWorkitems(this)">
+		<span class="glyphicon glyphicon-inbox iicons"
+			style="margin-right: 3px"></span>
+		<span class="footers">Workitems</span>
+	</div>
+	<div class="todolinks" id="menuActivities" style="margin-right: 225px"
+		onmouseover="footerHover(this)" onmouseout="footerOut(this)"  onclick="openActivities(this)">
+		<span class="glyphicon glyphicon-th-list iicons"
+			style="margin-right: 3px"></span>
+			<span class="footers">Activities</span>
+	</div>
+	<div class="todolinks" id="menuTalks" style="margin-right: 115px"
+		onmouseover="footerHover(this)" onmouseout="footerOut(this)" onclick="openTalks(this)">
+		<span class="glyphicon glyphicon-comment iicons"
+			style="margin-right: 3px"></span>
+			<span class="footers">Talks</span>
+	</div>
+	<div class="todolinks" id="menuTodo" onmouseover="footerHover(this)" onclick="openTodo(this)"
+		onmouseout="footerOut(this)">
+		<span class="glyphicon glyphicon-check iicons"></span><span
+			class="footers">Todo</span>
+	</div>
+
+		
+	<div class="workitems" style="opacity: 1; display: none;" >
+		<ul style="margin: 10px 10px 10px 10px;">
+			<li>workitems1</li>
+			<li>workitems2</li>
+			<li>workitems3</li>
+			<li>workitems5</li>
+			<li>workitems6</li>
+			<li>workitems7</li>
+			<li>workitems8</li>
+			<li>workitems9</li>
+			<li>workitems10</li>
+		</ul>
+	</div>
+	
+	<div class="settings" style="opacity: 1; display: none" >
+		<ul  style="margin: 10px 10px 10px 10px;">
+			<li><a href="#">Action</a></li>
+			<li><a href="#">Another action</a></li>
+			<li><a href="#">Something else here</a></li>
+			<li><a href="#">Separated link</a></li>
+			<li><a href="#">One more separated link</a></li>
+		</ul>
+	</div>
+	
+	<div id="talk_box" style="display: none;">
+		<div class="talks" style="opacity: 1;">
+			<div class="talks_recv">
+				<div >wowowowowwowo</div>
+			</div>
+			<div class="talks_recv">
+				ㅠㅠ 오늘 야근해야함..
+			</div>
+			<div class="talks_send">
+				ㅠㅠ 나도 야근해야함..
+			</div>
+			&nbsp;
+		</div>
+		<div class="write-talks">
+			<div class="input-group" style="margin: 5px 5px 5px 5px;">
+		      <input type="text" class="form-control" placeholder="Talk ...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">talk</button>
+		        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-paperclip"></span></button>
+		      </span>
+		    </div>
+		</div>
+	</div><!-- talk_box -->
+	
+	<div class="activities" style="opacity: 1;  display: none;">
+		<ul style="margin: 10px 10px 10px 10px;">
+			<li>activity!1</li>
+			<li>activity!2</li>
+			<li>activity!3</li>
+			<li>activity!5</li>
+			<li>activity!6</li>
+			<li>activity!7</li>
+			<li>activity!8</li>
+			<li>activity!9</li>
+			<li>activity!10</li>
+		</ul>
+	</div>
+	
+	<div class="todoList" style="opacity: 1;  display: none;">
+		<ul style="margin: 10px 10px 10px 10px;">
+			<li>TODO!!!1</li>
+			<li>TODO!!!2</li>
+			<li>TODO!!!3</li>
+			<li>TODO!!!5</li>
+			<li>TODO!!!6</li>
+			<li>TODO!!!7</li>
+			<li>TODO!!!8</li>
+			<li>TODO!!!9</li>
+			<li>TODO!!!10</li>
+		</ul>
+	</div>
+	
+</body>
+</html>

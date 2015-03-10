@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Mobile Specific Metas  ================================================== -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<!-- CORE CONCRETE  ================================================== -->
+<script type="text/javascript">
+	var BOOTSTRAP_VERSION = "bootstrap";
+	var BOOTSTRAP_JS_HEAD = 1;
+	var BOOTSTRAP_CDN_ENABLE = 0;
+	var BOOTSTRAP_NAVBAR_TYPE = 0;
+	var BOOTSTRAP_LOGO_OPTION = 1;
+	var BOOTSTRAP_NAVBAR = 1;
+	var BootstrapInputFix = true;
+	var BootstrapNavbarLineHeightFix = true;
+	var BOOTSTRAP_EDT = 0;
+</script>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Bootstrap :: Cover</title>
+<meta name="description" content="" />
+<meta name="generator" content="concrete5 - 5.6.3.1" />
+<script type="text/javascript">
+	var CCM_DISPATCHER_FILENAME = '/index.php';
+	var CCM_CID = 1775;
+	var CCM_EDIT_MODE = false;
+	var CCM_ARRANGE_MODE = false;
+	var CCM_IMAGE_PATH = "/concrete/images";
+	var CCM_TOOLS_PATH = "/index.php/tools/required";
+	var CCM_BASE_URL = "http://bootstraptheme.com";
+	var CCM_REL = "";
+</script>
+
+<link rel="shortcut icon" href="/files/2513/7825/5705/favicon.ico"
+	type="image/x-icon" />
+<link rel="icon" href="/files/2513/7825/5705/favicon.ico"
+	type="image/x-icon" />
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.bootstraptheme.com/concrete/css/ccm.base.css" />
+<script type="text/javascript"
+	src="http://cdn.bootstraptheme.com/concrete/js/jquery.js"></script>
+<script type="text/javascript"
+	src="http://cdn.bootstraptheme.com/concrete/js/ccm.base.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.bootstraptheme.com/packages/bootstrap/css/bootstrap/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.bootstraptheme.com/packages/bootstrap/css/bootstrap/docs.css" />
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.bootstraptheme.com/packages/bootstrap/css/bootstrap/bootstrap-overwrites.css" />
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.bootstraptheme.com/packages/bootstrap/css/members.css" />
+<script type="text/javascript"
+	src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/prettify.js"></script>
+<script type="text/javascript"
+	src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/jquery.easing.1.3.js"></script>
+<script type="text/javascript"
+	src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.bootstraptheme.com/packages/pro_image/blocks/pro_image/templates/background_img/view.css" />
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.bootstraptheme.com/packages/pro_image/blocks/pro_image/templates/background_img/css/view.css" />
+<script type="text/javascript"
+	src="http://cdn.bootstraptheme.com/packages/pro_image/blocks/pro_image/templates/background_img/js/jquery.backstretch.min.js"></script>
+<!--[if gte IE 9]>
+<script src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/modernizr.js"></script>
+<![endif]-->
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>	
+	
+	<script src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/html5shiv.js"></script>
+	<script src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/respond.min.js"></script>
+    <link href="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+    <link href="/packages/bootstrap/js/common/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+    <script src="/packages/bootstrap/js/common/respond.proxy.js"></script>
+	
+<![endif]-->
+<style>
+html,body {
+	height: 100%;
+}
+
+span.date {
+	color: white;
+    text-shadow: 4px 4px 16px #000000;
+    font: Arial black;
+    font-size:25px;
+    font-weight: 900;
+}
+
+span.time {
+	color: white;
+    text-shadow: 4px 4px 16px #000000;
+    font: Arial black;
+    font-size: 100px;
+    font-weight: 40;
+}
+
+</style>
+<script type="text/javascript">
+	function cycleImages() {
+		var ran = Math.floor((Math.random() * 10) + 1);
+		$.backstretch("D:/back/" + ran + ".JPG");
+	}
+
+	$(document).ready(
+					function() {
+						
+						cycleImages();
+						// run every 7s
+						setInterval('cycleImages()', 5000);
+						
+						
+						// Create two variable with the names of the months and days in an array
+						var monthNames = [ "January", "February", "March", "April",
+								"May", "June", "July", "August", "September",
+								"October", "November", "December" ];
+						var dayNames = [ "Sun", "Mon", "Tues", "Wed",
+								"Thu", "Fri", "Sat" ]
+
+						// Create a newDate() object
+						var newDate = new Date();
+						// Extract the current date from Date object
+						newDate.setDate(newDate.getDate());
+						// Output the day, date, month and year    
+						$('#Date').html(' '+(newDate.getMonth()+1) + "/" + newDate.getDate()
+										+ ' ' +dayNames[newDate.getDay()] );
+
+						setInterval(function() {
+							// Create a newDate() object and extract the minutes of the current time on the visitor's
+							var minutes = new Date().getMinutes();
+							console.log(minutes);
+							// Add a leading zero to the minutes value
+							$("#min").html((minutes < 10 ? "0" : "") + minutes);
+						}, 1000);
+
+						setInterval(function() {
+							// Create a newDate() object and extract the hours of the current time on the visitor's
+							var hours = new Date().getHours();
+							// Add a leading zero to the hours value
+							$("#hours").html(hours);
+						}, 1000);
+					});
+</script>
+</head>
+<body class="bs-cover">
+	<div class="container absolute" style="text-align: left; margin-left: 5px">
+		<span id="Date" class="date"></span>
+	</div>
+	<div class="site-wrapper">
+		<div class="site-wrapper-inner ">
+
+			<div class="cover-container">
+				<div class="inner cover absolute" style="text-align: center;">
+					<span id="hours" class="time"></span><span class="time">:</span><span id="min" class="time"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
