@@ -11,7 +11,7 @@ import a.pick.vo.PickVO;
 public class NormalRandomPicker extends AbstractPicker{
 
 	
-	private static final int LIMITS = 10;
+	private static final int LIMITS = 8;
 
 	@Override
 	public ArrayList<PickVO> pick(int seq) {
@@ -49,8 +49,8 @@ public class NormalRandomPicker extends AbstractPicker{
 	
 	public static void main(String[] args) {
 		NormalRandomPicker p=new NormalRandomPicker();
-		p.setTryN(10);
-		p.simulating(10);
+		p.setTryN(1);
+		p.simulating(1);
 	}
 
 	

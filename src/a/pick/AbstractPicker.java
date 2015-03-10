@@ -97,7 +97,7 @@ public abstract class AbstractPicker {
 			System.out.println(i+":\t"+zero[i]);
 		}
 		
-		System.out.println(total);
+		System.out.println((total*1000)+" 원");
 		
 	}
 }

@@ -18,12 +18,15 @@ public class RandomPicker extends AbstractPicker{
 		int rand = (int) (Math.floor(Math.random() * 100) % max);
 		return rand;
 	}
+	
+	private static final int LIMITS = 12;
 
 	@Override
 	public ArrayList<PickVO> pick(int seq) {
 		
 		ArrayList<ResultVO> list = AnaVOMain.getResultListNoBonus(seq);
 		ArrayList<LineAnaVO> result = AnaVOMain.getAnaVOList(list, seq);
+		ArrayList<PickVO> glist=new ArrayList<PickVO>();
 		
 		HashMap<String, IntVO> map=new HashMap<String, IntVO>();
  		
@@ -33,12 +36,16 @@ public class RandomPicker extends AbstractPicker{
 		
 		PatternMaker.printKeyNVal(map);
 		
-		return null;
+		
+		
+		return glist;
 	}
 	
 	public static void main(String[] args) {
 		RandomPicker p=new RandomPicker();
-		p.pick(300);
+//		p.pick(300);
+		p.setTryN(10);
+		p.simulating(10);
 	}
 
 	

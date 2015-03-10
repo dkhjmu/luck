@@ -83,8 +83,12 @@ public class TirdRandomPicker extends AbstractPicker {
 
 	public static void main(String[] args) {
 		TirdRandomPicker p = new TirdRandomPicker();
+//		p.setTryN(10);
+//		p.print(p.pick(300));
+		
 		p.setTryN(10);
-		p.print(p.pick(300));
+		p.simulating(10);
+		
 	}
 
 }
